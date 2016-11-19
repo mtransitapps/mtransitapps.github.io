@@ -4,6 +4,31 @@
   "description": "Transit information in your pocket.Bike, Bus, Subway, Train… Offline & Real-Time",
   "icons": [
     {
+      "src": "https://raw.githubusercontent.com/mtransitapps/commons-android/master/res/mipmap-mdpi/ic_launcher.png",
+      "sizes": "58x58",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/mtransitapps/commons-android/master/res/mipmap-hdpi/ic_launcher.png",
+      "sizes": "74x74",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/mtransitapps/commons-android/master/res/mipmap-xhdpi/ic_launcher.png",
+      "sizes": "98x98",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/mtransitapps/commons-android/master/res/mipmap-xxhdpi/ic_launcher.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/mtransitapps/commons-android/master/res/mipmap-xxxhdpi/ic_launcher.png",
+      "sizes": "194x194",
+      "type": "image/png"
+    },
+    {
       "src": "hi-res-app-icon.png",
       "sizes": "512x512",
       "type": "image/png"

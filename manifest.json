@@ -1,0 +1,22 @@
+{
+  "short_name": "MonTransit",
+  "name": "MonTransit",
+  "description": "Transit information in your pocket.Bike, Bus, Subway, Train… Offline & Real-Time",
+  "icons": [
+    {
+      "src": "hi-res-app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+  ],
+  "start_url": "/index.html",
+  "display": "browser",
+  "orientation": "portrait",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "org.mtransit.android"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "org.mtransit.android",
+    "sha256_cert_fingerprints":
+    ["F8:EA:1D:EC:24:74:36:62:EF:02:43:CD:EB:55:F4:A5:08:58:23:E2:A3:4A:E0:B1:40:AC:63:01:28:95:DA:7A"]
+  }
+}]

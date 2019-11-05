@@ -45,15 +45,12 @@
 				var projectsTable = document.getElementById("projects-table");
 				for (p = 0; p < projects.length; p++) {
 					var project = projects[p];
-					console.log("project: " + project);
 					var projectUrl = project;
 					if (!projectUrl.endsWith("-android")) {
 						projectUrl = projectUrl + "-android";
 					}
-					console.log("projectUrl: " + projectUrl);
 					for (b = 0; b < branches.length; b++) {
 						var branch = branches[b];
-						console.log("branch: " + branch);
 						var row = projectsTable.insertRow(); // append at the bottom
 						var c = 0;
 						if (b == 0) {

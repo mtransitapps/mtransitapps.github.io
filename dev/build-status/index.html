@@ -15,12 +15,98 @@
 				vertical-align: top;
 			}
 		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var projects = [
+					"mtransit-for-android",
+					"ca-edmonton-ets-bus",
+					"ca-halifax-transit-bus",
+					"ca-halifax-transit-ferry",
+					"ca-le-richelain-citlr-bus",
+					"ca-london-transit-bus",
+					"ca-quebec-rtc-bus",
+					"ca-roussillon-citrous-bus",
+					"ca-toronto-ttc-bus",
+					"ca-toronto-ttc-light-rail",
+					"ca-toronto-ttc-subway",
+					"ca-vancouver-mobi-bike",
+					"us-anchorage-people-mover-bus",
+					"us-clark-county-c-tran-bus",
+					"us-everett-transit-bus",
+					"us-juneau-capital-transit-bus",
+					"us-longview-rivercities-transit-bus",
+					"us-snohomish-county-community-transit-bus",
+					"us-washington-state-ferry"
+				];
+				var branches = [
+					"master",
+					"mmathieum"
+				];
+				var projectsTable = document.getElementById("projects-table");
+				for (p = 0; p < projects.length; p++) {
+					var project = projects[p];
+					console.log("project: " + project);
+					var projectUrl = project;
+					if (!projectUrl.endsWith("-android")) {
+						projectUrl = projectUrl + "-android";
+					}
+					console.log("projectUrl: " + projectUrl);
+					for (b = 0; b < branches.length; b++) {
+						var branch = branches[b];
+						console.log("branch: " + branch);
+						var row = projectsTable.insertRow(); // append at the bottom
+						var c = 0;
+						if (b == 0) {
+							var cellProjectNameWithIcon = row.insertCell(c);
+							cellProjectNameWithIcon.rowSpan = "2";
+							cellProjectNameWithIcon.innerHTML =
+								"<img class=\"icon\" src=\"https://raw.githubusercontent.com/mtransitapps/"+projectUrl+"/"+branch+"/pub/hi-res-app-icon.png\">"
+								+ project;
+							c++;
+						}
+						var cellBranchName = row.insertCell(c++);
+						cellBranchName.innerHTML = branch;
+						var cellCircleCI = row.insertCell(c++);
+						cellCircleCI.innerHTML =
+							"<a href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/tree/"+branch+"\" rel=\"nofollow\">"
+								+ "<img alt=\"CircleCI\""
+									+ "src=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/tree/"+branch+".svg?style=svg\">"
+							+ "</a>";
+						var cellTravisCI = row.insertCell(c++);
+						cellTravisCI.innerHTML =
+							"<a href=\"https://travis-ci.org/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+								+ "<img alt=\"Travis CI\""
+									+ "src=\"https://api.travis-ci.org/mtransitapps/"+project+"-gradle.svg?branch="+branch+"\">"
+							+ "</a>";
+						var cellGitLab = row.insertCell(c++);
+						if (project == "mtransit-for-android") {
+							cellGitLab.innerHTML =
+								"<a href=\"https://gitlab.com/mtransitapps/"+project+"-gradle/pipelines\" rel=\"nofollow\">"
+									+ "<img alt=\"GitLab\""
+										+ "src=\"https://gitlab.com/mtransitapps/"+project+"-gradle/badges/"+branch+"/pipeline.svg\">"
+								+ "</a>";
+						} else {
+							cellGitLab.innerHTML = "<!-- TODO GitLab -->";
+						}
+						var cellBitrise = row.insertCell(c++);
+						if (project == "mtransit-for-android") {
+							cellBitrise.innerHTML =
+								"<a href=\"https://app.bitrise.io/app/16352774a3da9a41\" rel=\"nofollow\">"
+									+ "<img alt=\"Bitrise\""
+										+ "src=\"https://app.bitrise.io/app/16352774a3da9a41/status.svg?token=Ue0WAJU3awNJm80pty5K_g&branch="+branch+"\">"
+								+ "</a>";
+						} else {
+							cellBitrise.innerHTML = "<!-- TODO Bitrise -->";
+						}
+					}
+				}
+			};
+		</script>
 	</head>
 	<body>
 		<h2>MonTransit Build status</h2>
 
-
-		<table>
+		<table id="projects-table">
 			<thead>
 				<tr>
 					<th>Project</th>
@@ -32,936 +118,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- mtransit-for-android -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/mtransit-for-android/master/pub/hi-res-app-icon.png">
-						mtransit-for-android
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/mtransit-for-android-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/mtransit-for-android-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/mtransit-for-android-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/mtransit-for-android-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<a href="https://gitlab.com/mtransitapps/mtransit-for-android-gradle/pipelines" rel="nofollow">
-							<img alt="GitLab"
-								src="https://gitlab.com/mtransitapps/mtransit-for-android-gradle/badges/master/pipeline.svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://app.bitrise.io/app/16352774a3da9a41" rel="nofollow">
-							<img alt="Bitrise"
-								src="https://app.bitrise.io/app/16352774a3da9a41/status.svg?token=Ue0WAJU3awNJm80pty5K_g&branch=master">
-						</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/mtransit-for-android-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/mtransit-for-android-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/mtransit-for-android-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/mtransit-for-android-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<a href="https://gitlab.com/mtransitapps/mtransit-for-android-gradle/pipelines" rel="nofollow">
-							<img alt="GitLab"
-								src="https://gitlab.com/mtransitapps/mtransit-for-android-gradle/badges/mmathieum/pipeline.svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://app.bitrise.io/app/16352774a3da9a41" rel="nofollow">
-							<img alt="Bitrise"
-								src="https://app.bitrise.io/app/16352774a3da9a41/status.svg?token=Ue0WAJU3awNJm80pty5K_g&branch=mmathieum">
-						</a>
-					</td>
-				</tr>
-
-				<!-- ca-halifax-transit-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-halifax-transit-bus-android/master/pub/hi-res-app-icon.png">
-						ca-halifax-transit-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-halifax-transit-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-halifax-transit-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-halifax-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-halifax-transit-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-halifax-transit-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-halifax-transit-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-halifax-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-halifax-transit-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- ca-halifax-transit-ferry -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-halifax-transit-ferry-android/master/pub/hi-res-app-icon.png">
-						ca-halifax-transit-ferry
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-halifax-transit-ferry-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-halifax-transit-ferry-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-halifax-transit-ferry-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-halifax-transit-ferry-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-halifax-transit-ferry-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-halifax-transit-ferry-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-halifax-transit-ferry-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-halifax-transit-ferry-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- ca-le-richelain-citlr-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-le-richelain-citlr-bus-android/master/pub/hi-res-app-icon.png">
-						ca-le-richelain-citlr-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-le-richelain-citlr-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-le-richelain-citlr-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-le-richelain-citlr-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-le-richelain-citlr-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-le-richelain-citlr-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-le-richelain-citlr-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-le-richelain-citlr-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-le-richelain-citlr-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- ca-london-transit-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-london-transit-bus-android/master/pub/hi-res-app-icon.png">
-						ca-london-transit-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-london-transit-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-london-transit-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-london-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-london-transit-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-london-transit-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-london-transit-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-london-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-london-transit-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- ca-quebec-rtc-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-quebec-rtc-bus-android/master/pub/hi-res-app-icon.png">
-						ca-quebec-rtc-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-quebec-rtc-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-quebec-rtc-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-quebec-rtc-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-quebec-rtc-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-quebec-rtc-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-quebec-rtc-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-quebec-rtc-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-quebec-rtc-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- ca-roussillon-citrous-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-roussillon-citrous-bus-android/master/pub/hi-res-app-icon.png">
-						ca-roussillon-citrous-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-roussillon-citrous-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-roussillon-citrous-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-roussillon-citrous-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-roussillon-citrous-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-roussillon-citrous-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-roussillon-citrous-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-roussillon-citrous-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-roussillon-citrous-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- ca-toronto-ttc-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-toronto-ttc-bus-android/master/pub/hi-res-app-icon.png">
-						ca-toronto-ttc-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-toronto-ttc-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-toronto-ttc-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-toronto-ttc-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-toronto-ttc-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- ca-toronto-ttc-light-rail -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-toronto-ttc-light-rail-android/master/pub/hi-res-app-icon.png">
-						ca-toronto-ttc-light-rail
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-light-rail-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-light-rail-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-toronto-ttc-light-rail-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-toronto-ttc-light-rail-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-light-rail-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-light-rail-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-toronto-ttc-light-rail-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-toronto-ttc-light-rail-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- ca-toronto-ttc-subway -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-toronto-ttc-subway-android/master/pub/hi-res-app-icon.png">
-						ca-toronto-ttc-subway
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-subway-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-subway-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-toronto-ttc-subway-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-toronto-ttc-subway-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-subway-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-toronto-ttc-subway-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-toronto-ttc-subway-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-toronto-ttc-subway-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- ca-vancouver-mobi-bike -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/ca-vancouver-mobi-bike-android/master/pub/hi-res-app-icon.png">
-						ca-vancouver-mobi-bike
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-vancouver-mobi-bike-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-vancouver-mobi-bike-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-vancouver-mobi-bike-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-vancouver-mobi-bike-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/ca-vancouver-mobi-bike-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/ca-vancouver-mobi-bike-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/ca-vancouver-mobi-bike-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/ca-vancouver-mobi-bike-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- us-anchorage-people-mover-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/us-anchorage-people-mover-bus-android/master/pub/hi-res-app-icon.png">
-						us-anchorage-people-mover-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-anchorage-people-mover-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-anchorage-people-mover-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-anchorage-people-mover-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-anchorage-people-mover-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-anchorage-people-mover-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-anchorage-people-mover-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-anchorage-people-mover-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-anchorage-people-mover-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- us-clark-county-c-tran-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/us-clark-county-c-tran-bus-android/master/pub/hi-res-app-icon.png">
-						us-clark-county-c-tran-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-clark-county-c-tran-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-clark-county-c-tran-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-clark-county-c-tran-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-clark-county-c-tran-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-clark-county-c-tran-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-clark-county-c-tran-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-clark-county-c-tran-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-clark-county-c-tran-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- us-everett-transit-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/us-everett-transit-bus-android/master/pub/hi-res-app-icon.png">
-						us-everett-transit-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-everett-transit-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-everett-transit-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-everett-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-everett-transit-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-everett-transit-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-everett-transit-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-everett-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-everett-transit-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- us-juneau-capital-transit-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/us-juneau-capital-transit-bus-android/master/pub/hi-res-app-icon.png">
-						us-juneau-capital-transit-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-juneau-capital-transit-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-juneau-capital-transit-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-juneau-capital-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-juneau-capital-transit-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-juneau-capital-transit-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-juneau-capital-transit-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-juneau-capital-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-juneau-capital-transit-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- us-longview-rivercities-transit-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/us-longview-rivercities-transit-bus-android/master/pub/hi-res-app-icon.png">
-						us-longview-rivercities-transit-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-longview-rivercities-transit-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-longview-rivercities-transit-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-longview-rivercities-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-longview-rivercities-transit-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-longview-rivercities-transit-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-longview-rivercities-transit-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-longview-rivercities-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-longview-rivercities-transit-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- us-snohomish-county-community-transit-bus -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/us-snohomish-county-community-transit-bus-android/master/pub/hi-res-app-icon.png">
-						us-snohomish-county-community-transit-bus
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-snohomish-county-community-transit-bus-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-snohomish-county-community-transit-bus-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-snohomish-county-community-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-snohomish-county-community-transit-bus-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-snohomish-county-community-transit-bus-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-snohomish-county-community-transit-bus-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-snohomish-county-community-transit-bus-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-snohomish-county-community-transit-bus-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
-				<!-- us-washington-state-ferry -->
-				<tr>
-					<td rowspan="2">
-						<img class="icon" src="https://raw.githubusercontent.com/mtransitapps/us-washington-state-ferry-android/master/pub/hi-res-app-icon.png">
-						us-washington-state-ferry
-					</td>
-					<td>
-						master
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-washington-state-ferry-gradle/tree/master" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-washington-state-ferry-gradle/tree/master.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-washington-state-ferry-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-washington-state-ferry-gradle.svg?branch=master"></a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-				<tr>
-					<td>
-						mmathieum
-					</td>
-					<td>
-						<a href="https://circleci.com/gh/mtransitapps/us-washington-state-ferry-gradle/tree/mmathieum" rel="nofollow">
-							<img alt="CircleCI"
-								src="https://circleci.com/gh/mtransitapps/us-washington-state-ferry-gradle/tree/mmathieum.svg?style=svg">
-						</a>
-					</td>
-					<td>
-						<a href="https://travis-ci.org/mtransitapps/us-washington-state-ferry-gradle/" rel="nofollow">
-							<img alt="Travis CI"
-								src="https://api.travis-ci.org/mtransitapps/us-washington-state-ferry-gradle.svg?branch=mmathieum">
-						</a>
-					</td>
-					<td>
-						<!-- TODO GitLab -->
-					</td>
-					<td>
-						<!-- TODO Bitrise -->
-					</td>
-				</tr>
-
+				<!-- Filled with JavaScript -->
 			</tbody>
 		</table>
 	</body>

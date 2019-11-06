@@ -41,7 +41,7 @@
 					"us-washington-state-ferry"
 				];
 				var branches = [
-					"master",
+					// "master", // TODO later
 					"mmathieum"
 				];
 				var projectsTable = document.getElementById("projects-table");
@@ -57,7 +57,7 @@
 						var c = 0;
 						if (b == 0) {
 							var cellProjectNameWithIcon = row.insertCell(c);
-							cellProjectNameWithIcon.rowSpan = "2";
+							cellProjectNameWithIcon.rowSpan = ""+branches.length+"";
 							cellProjectNameWithIcon.innerHTML =
 								"<img class=\"icon\" src=\"https://raw.githubusercontent.com/mtransitapps/"+projectUrl+"/"+branch+"/pub/hi-res-app-icon.png\">"
 								+ project;

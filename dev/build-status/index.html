@@ -70,13 +70,68 @@
 					"us-snohomish-county-community-transit-bus",
 					"us-washington-state-ferry"
 				];
+				var pkgs = [
+					"org.mtransit.android",
+					"org.mtransit.android.ca_brampton_transit_bus",
+					"org.mtransit.android.ca_calgary_transit_bus",
+					"org.mtransit.android.ca_calgary_transit_train",
+					"org.mtransit.android.ca_chambly_richelieu_carignan_citcrc_bus",
+					"org.mtransit.android.ca_durham_region_transit_bus",
+					"org.mtransit.android.ca_edmonton_ets_bus",
+					"org.mtransit.android.ca_edmonton_ets_train",
+					"org.mtransit.android.ca_gatineau_sto_bus",
+					"org.mtransit.android.ca_grand_river_transit_bus",
+					"org.mtransit.android.ca_halifax_transit_bus",
+					"org.mtransit.android.ca_halifax_transit_ferry",
+					"org.mtransit.android.ca_le_richelain_citlr_bus",
+					"org.mtransit.android.ca_london_transit_bus",
+					"org.mtransit.android.ca_montreal_bixi_bike",
+					"org.mtransit.android.ca_montreal_stm_bus",
+					"org.mtransit.android.ca_montreal_stm_ubway",
+					"org.mtransit.android.ca_oakville_transit_bus",
+					"org.mtransit.android.ca_ottawa_oc_transpo_bus",
+					"org.mtransit.android.ca_ottawa_oc_transpo_train",
+					"org.mtransit.android.ca_prince_george_transit_system_bus",
+					"org.mtransit.android.ca_quebec_orleans_express_bus",
+					"org.mtransit.android.ca_quebec_rtc_bus",
+					"org.mtransit.android.ca_red_deer_transit_bus",
+					"org.mtransit.android.ca_regina_transit_bus",
+					"org.mtransit.android.ca_richelieu_citvr_bus",
+					"org.mtransit.android.ca_roussillon_citrous_bus",
+					"org.mtransit.android.ca_strathcona_county_transit_bus",
+					"org.mtransit.android.ca_sudbury_transit_bus",
+					"org.mtransit.android.ca_thunder_bay_transit_bus",
+					"org.mtransit.android.ca_toronto_share_bike",
+					"org.mtransit.android.ca_toronto_ttc_bus",
+					"org.mtransit.android.ca_toronto_ttc_light_rail",
+					"org.mtransit.android.ca_toronto_ttc_subway",
+					"org.mtransit.android.ca_vancouver_mobi_bike",
+					"org.mtransit.android.ca_vancouver_translink_bus",
+					"org.mtransit.android.ca_vancouver_translink_ferry2",
+					"org.mtransit.android.ca_vancouver_translink_train",
+					"org.mtransit.android.ca_vernon_transit_system_bus",
+					"org.mtransit.android.ca_victoria_regional_transit_system_bus",
+					"org.mtransit.android.ca_welland_transit_bus",
+					"org.mtransit.android.ca_windsor_transit_bus",
+					"org.mtransit.android.ca_winnipeg_transit_bus",
+					"org.mtransit.android.ca_york_region_yrt_viva_bus",
+					"org.mtransit.android.us_anchorage_people_mover_bus",
+					"org.mtransit.android.us_clark_county_c_tran_bus",
+					"org.mtransit.android.us_everett_transit_bus",
+					"org.mtransit.android.us_juneau_capital_transit_bus",
+					"org.mtransit.android.us_longview_rivercities_transit_bus",
+					"org.mtransit.android.us_snohomish_county_community_transit_bus",
+					"org.mtransit.android.us_washington_state_ferry"
+				];
 				var branches = [
 					// "master", // TODO later
 					"mmathieum"
 				];
 				var projectsTable = document.getElementById("projects-table");
-				for (p = 0; p < projects.length; p++) {
+				var size = Math.min(projects.length, pkgs.length);
+				for (p = 0; p < size; p++) {
 					var project = projects[p];
+					var pkg = pkgs[p];
 					var projectUrl = project;
 					if (!projectUrl.endsWith("-android")) {
 						projectUrl = projectUrl + "-android";
@@ -91,6 +146,23 @@
 							cellProjectNameWithIcon.innerHTML =
 								"<img class=\"icon\" src=\"https://raw.githubusercontent.com/mtransitapps/"+projectUrl+"/"+branch+"/src/main/play/listings/en-US/graphics/icon/1.png\">"
 								+ project;
+							c++;
+							var cellLinks = row.insertCell(c);
+							cellLinks.rowSpan = ""+branches.length+"";
+							cellLinks.innerHTML = ""
+								+ "<a title=\"Google Play Store\" href=\"https://play.google.com/store/apps/details?id="+pkg+"\" rel=\"nofollow\">"
+									+ "[S]"
+								+ "</a>"
+								+ "<a title=\"BETA testing\"  href=\"https://play.google.com/apps/testing/"+pkg+"\" rel=\"nofollow\">"
+									+ "[B]"
+								+ "</a>"
+								+ "<a title=\"CircleCI\" href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+									+ "[C]"
+								+ "</a>"
+								+ "<a title=\"Travis CI\"  href=\"https://travis-ci.org/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+									+ "[T]"
+								+ "</a>"
+								+ "";
 							c++;
 						}
 						var cellBranchName = row.insertCell(c++);
@@ -139,6 +211,7 @@
 			<thead>
 				<tr>
 					<th>Project</th>
+					<th>Links</th>
 					<th>Branch</th>
 					<th>CircleCI</th>
 					<th>Travis CI</th>

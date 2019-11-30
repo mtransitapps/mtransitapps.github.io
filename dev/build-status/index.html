@@ -150,11 +150,8 @@
 							var cellLinks = row.insertCell(c);
 							cellLinks.rowSpan = ""+branches.length+"";
 							cellLinks.innerHTML = ""
-								+ "<a title=\"Google Play Store\" href=\"https://play.google.com/store/apps/details?id="+pkg+"\" rel=\"nofollow\">"
-									+ "[S]"
-								+ "</a>"
-								+ "<a title=\"BETA testing\"  href=\"https://play.google.com/apps/testing/"+pkg+"\" rel=\"nofollow\">"
-									+ "[B]"
+								+ "<a title=\"GitHub Gradle project\" href=\"https://github.com/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+									+ "[G]"
 								+ "</a>"
 								+ "<a title=\"CircleCI\" href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
 									+ "[C]"
@@ -162,11 +159,20 @@
 								+ "<a title=\"Travis CI\"  href=\"https://travis-ci.org/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
 									+ "[T]"
 								+ "</a>"
+								+ "<a title=\"BETA testing\"  href=\"https://play.google.com/apps/testing/"+pkg+"\" rel=\"nofollow\">"
+									+ "[B]"
+								+ "</a>"
+								+ "<a title=\"Google Play Store\" href=\"https://play.google.com/store/apps/details?id="+pkg+"\" rel=\"nofollow\">"
+									+ "[S]"
+								+ "</a>"
 								+ "";
 							c++;
 						}
 						var cellBranchName = row.insertCell(c++);
-						cellBranchName.innerHTML = branch;
+						cellBranchName.innerHTML = ""
+								+ "<a title=\"GitHub Gradle project branch\" href=\"https://github.com/mtransitapps/"+project+"-gradle/tree/"+branch+"\" rel=\"nofollow\">"
+									+ branch
+								+ "</a>";
 						var cellCircleCI = row.insertCell(c++);
 						cellCircleCI.innerHTML =
 							"<a href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/tree/"+branch+"\" rel=\"nofollow\">"

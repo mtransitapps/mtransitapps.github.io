@@ -1,0 +1,3 @@
+google.com, pub-8335727208080234, DIRECT, f08c47fec0942fa0
+facebook.com, 818480641576235, RESELLER, c3e20eee3f780d68
+mopub.com, 393b8d3480ab4bbe806344aa780bad64, DIRECT, 74b46c0ea83967ca

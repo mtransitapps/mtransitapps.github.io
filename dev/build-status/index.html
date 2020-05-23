@@ -259,6 +259,10 @@
 					"master",
 					"mmathieum"
 				];
+				const urlParams = new URLSearchParams(window.location.search);
+				if (urlParams.has('branches')) {
+					branches = urlParams.get('branches').split(",")
+				}
 				var projectsTable = document.getElementById("projects-table");
 				var size = Math.min(projects.length, pkgs.length);
 				for (p = 0; p < size; p++) {

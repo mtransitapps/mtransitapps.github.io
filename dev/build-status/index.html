@@ -263,8 +263,42 @@
 				if (urlParams.has('branches')) {
 					branches = urlParams.get('branches').split(",")
 				}
+				var ciProviders = [
+					"circleci",
+					"travis",
+					"gitlab",
+					"bitise"
+				];
+				if (urlParams.has('ci')) {
+					ciProviders = urlParams.get('ci').split(",")
+				}
 				var projectsTable = document.getElementById("projects-table");
+				var tableHead = projectsTable.createTHead();
+				var tableHeadRow = tableHead.insertRow();
+				var tableHeadRowCell = tableHeadRow.insertCell();
+				tableHeadRowCell.innerHTML = "Project";
+				var tableHeadRowCell = tableHeadRow.insertCell();
+				tableHeadRowCell.innerHTML = "Links";
+				var tableHeadRowCell = tableHeadRow.insertCell();
+				tableHeadRowCell.innerHTML = "Branch";
+				if (ciProviders.includes("circleci")) {
+					var tableHeadRowCell = tableHeadRow.insertCell();
+					tableHeadRowCell.innerHTML = "CircleCI";
+				}
+				if (ciProviders.includes("travis")) {
+					var tableHeadRowCell = tableHeadRow.insertCell();
+					tableHeadRowCell.innerHTML.innerHTML = "Travis CI";
+				}
+				if (ciProviders.includes("gitlab")) {
+					var tableHeadRowCell = tableHeadRow.insertCell();
+					tableHeadRowCell.innerHTML.innerHTML = "GitLab CI";
+				}
+				if (ciProviders.includes("bitrise")) {
+					var tableHeadRowCell = tableHeadRow.insertCell();
+					tableHeadRowCell.innerHTML.innerHTML = "Bitrise";
+				}
 				var size = Math.min(projects.length, pkgs.length);
+				var tableBody = projectsTable.createTBody();
 				for (p = 0; p < size; p++) {
 					var project = projects[p];
 					var pkg = pkgs[p];
@@ -274,7 +308,7 @@
 					}
 					for (b = 0; b < branches.length; b++) {
 						var branch = branches[b];
-						var row = projectsTable.insertRow(); // append at the bottom
+						var row = tableBody.insertRow(); // append at the bottom
 						var c = 0;
 						if (b == 0) {
 							var cellProjectNameWithIcon = row.insertCell(c);
@@ -285,23 +319,31 @@
 							c++;
 							var cellLinks = row.insertCell(c);
 							cellLinks.rowSpan = ""+branches.length+"";
-							cellLinks.innerHTML = ""
+							cellLinks.innerHTML = "";
+							cellLinks.innerHTML += ""
 								+ "<a title=\"GitHub Gradle project\" href=\"https://github.com/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
 									+ "[G]"
-								+ "</a>"
-								+ "<a title=\"CircleCI\" href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
-									+ "[C]"
-								+ "</a>"
-								+ "<a title=\"Travis CI\"  href=\"https://travis-ci.org/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
-									+ "[T]"
-								+ "</a>"
+								+ "</a>";
+							if (ciProviders.includes("circleci")) {
+								cellLinks.innerHTML += ""
+									+ "<a title=\"CircleCI\" href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+										+ "[C]"
+									+ "</a>";
+							}
+							if (ciProviders.includes("travis")) {
+								cellLinks.innerHTML += ""
+									+ "<a title=\"Travis CI\"  href=\"https://travis-ci.org/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+										+ "[T]"
+									+ "</a>";
+							}
+							cellLinks.innerHTML += ""
 								+ "<a title=\"BETA testing\"  href=\"https://play.google.com/apps/testing/"+pkg+"\" rel=\"nofollow\">"
 									+ "[B]"
-								+ "</a>"
+								+ "</a>";
+							cellLinks.innerHTML += ""
 								+ "<a title=\"Google Play Store\" href=\"https://play.google.com/store/apps/details?id="+pkg+"\" rel=\"nofollow\">"
 									+ "[S]"
-								+ "</a>"
-								+ "";
+								+ "</a>";
 							c++;
 						}
 						var cellBranchName = row.insertCell(c++);
@@ -309,37 +351,45 @@
 								+ "<a title=\"GitHub Gradle project branch\" href=\"https://github.com/mtransitapps/"+project+"-gradle/tree/"+branch+"\" rel=\"nofollow\">"
 									+ branch
 								+ "</a>";
-						var cellCircleCI = row.insertCell(c++);
-						cellCircleCI.innerHTML =
-							"<a href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/tree/"+branch+"\" rel=\"nofollow\">"
-								+ "<img alt=\"CircleCI\""
-									+ "src=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/tree/"+branch+".svg?style=svg\">"
-							+ "</a>";
-						var cellTravisCI = row.insertCell(c++);
-						cellTravisCI.innerHTML =
-							"<a href=\"https://travis-ci.org/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
-								+ "<img alt=\"Travis CI\""
-									+ "src=\"https://api.travis-ci.org/mtransitapps/"+project+"-gradle.svg?branch="+branch+"\">"
-							+ "</a>";
-						var cellGitLab = row.insertCell(c++);
-						if (project == "mtransit-for-android") {
-							cellGitLab.innerHTML =
-								"<a href=\"https://gitlab.com/mtransitapps/"+project+"-gradle/pipelines\" rel=\"nofollow\">"
-									+ "<img alt=\"GitLab\""
-										+ "src=\"https://gitlab.com/mtransitapps/"+project+"-gradle/badges/"+branch+"/pipeline.svg\">"
+						if (ciProviders.includes("circleci")) {
+							var cellCircleCI = row.insertCell(c++);
+							cellCircleCI.innerHTML =
+								"<a href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/tree/"+branch+"\" rel=\"nofollow\">"
+									+ "<img alt=\"CircleCI\""
+										+ "src=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/tree/"+branch+".svg?style=svg\">"
 								+ "</a>";
-						} else {
-							cellGitLab.innerHTML = "<!-- TODO GitLab -->";
 						}
-						var cellBitrise = row.insertCell(c++);
-						if (project == "mtransit-for-android") {
-							cellBitrise.innerHTML =
-								"<a href=\"https://app.bitrise.io/app/16352774a3da9a41\" rel=\"nofollow\">"
-									+ "<img alt=\"Bitrise\""
-										+ "src=\"https://app.bitrise.io/app/16352774a3da9a41/status.svg?token=Ue0WAJU3awNJm80pty5K_g&branch="+branch+"\">"
+						if (ciProviders.includes("travis")) {
+							var cellTravisCI = row.insertCell(c++);
+							cellTravisCI.innerHTML =
+								"<a href=\"https://travis-ci.org/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+									+ "<img alt=\"Travis CI\""
+										+ "src=\"https://api.travis-ci.org/mtransitapps/"+project+"-gradle.svg?branch="+branch+"\">"
 								+ "</a>";
-						} else {
-							cellBitrise.innerHTML = "<!-- TODO Bitrise -->";
+						}
+						if (ciProviders.includes("gitlab")) {
+							var cellGitLab = row.insertCell(c++);
+							if (project == "mtransit-for-android") {
+								cellGitLab.innerHTML =
+									"<a href=\"https://gitlab.com/mtransitapps/"+project+"-gradle/pipelines\" rel=\"nofollow\">"
+										+ "<img alt=\"GitLab\""
+											+ "src=\"https://gitlab.com/mtransitapps/"+project+"-gradle/badges/"+branch+"/pipeline.svg\">"
+									+ "</a>";
+							} else {
+								cellGitLab.innerHTML = "<!-- TODO GitLab -->";
+							}
+						}
+						if (ciProviders.includes("bitrise")) {
+							var cellBitrise = row.insertCell(c++);
+							if (project == "mtransit-for-android") {
+								cellBitrise.innerHTML =
+									"<a href=\"https://app.bitrise.io/app/16352774a3da9a41\" rel=\"nofollow\">"
+										+ "<img alt=\"Bitrise\""
+											+ "src=\"https://app.bitrise.io/app/16352774a3da9a41/status.svg?token=Ue0WAJU3awNJm80pty5K_g&branch="+branch+"\">"
+									+ "</a>";
+							} else {
+								cellBitrise.innerHTML = "<!-- TODO Bitrise -->";
+							}
 						}
 					}
 				}
@@ -350,20 +400,7 @@
 		<h2>MonTransit Build status</h2>
 
 		<table id="projects-table">
-			<thead>
-				<tr>
-					<th>Project</th>
-					<th>Links</th>
-					<th>Branch</th>
-					<th>CircleCI</th>
-					<th>Travis CI</th>
-					<th>GitLab CI</th>
-					<th>Bitrise</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- Filled with JavaScript -->
-			</tbody>
+			<!-- Filled with JavaScript -->
 		</table>
 	</body>
 </html>

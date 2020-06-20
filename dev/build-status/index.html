@@ -287,15 +287,15 @@
 				}
 				if (ciProviders.includes("travis")) {
 					var tableHeadRowCell = tableHeadRow.insertCell();
-					tableHeadRowCell.innerHTML.innerHTML = "Travis CI";
+					tableHeadRowCell.innerHTML = "Travis CI";
 				}
 				if (ciProviders.includes("gitlab")) {
 					var tableHeadRowCell = tableHeadRow.insertCell();
-					tableHeadRowCell.innerHTML.innerHTML = "GitLab CI";
+					tableHeadRowCell.innerHTML = "GitLab CI";
 				}
 				if (ciProviders.includes("bitrise")) {
 					var tableHeadRowCell = tableHeadRow.insertCell();
-					tableHeadRowCell.innerHTML.innerHTML = "Bitrise";
+					tableHeadRowCell.innerHTML = "Bitrise";
 				}
 				var size = Math.min(projects.length, pkgs.length);
 				var tableBody = projectsTable.createTBody();

@@ -332,7 +332,7 @@
 							}
 							if (ciProviders.includes("travis")) {
 								cellLinks.innerHTML += ""
-									+ "<a title=\"Travis CI\"  href=\"https://travis-ci.org/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+									+ "<a title=\"Travis CI\"  href=\"https://travis-ci.com/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
 										+ "[T]"
 									+ "</a>";
 							}
@@ -362,9 +362,9 @@
 						if (ciProviders.includes("travis")) {
 							var cellTravisCI = row.insertCell(c++);
 							cellTravisCI.innerHTML =
-								"<a href=\"https://travis-ci.org/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+								"<a href=\"https://travis-ci.com/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
 									+ "<img alt=\"Travis CI\""
-										+ "src=\"https://api.travis-ci.org/mtransitapps/"+project+"-gradle.svg?branch="+branch+"\">"
+										+ "src=\"https://api.travis-ci.com/mtransitapps/"+project+"-gradle.svg?branch="+branch+"\">"
 								+ "</a>";
 						}
 						if (ciProviders.includes("gitlab")) {

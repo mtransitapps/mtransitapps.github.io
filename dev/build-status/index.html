@@ -255,6 +255,7 @@
 				var ciProviders = [
 					"circleci",
 					"travis",
+					"github",
 					"gitlab",
 					"bitise"
 				];
@@ -277,6 +278,10 @@
 				if (ciProviders.includes("travis")) {
 					var tableHeadRowCell = tableHeadRow.insertCell();
 					tableHeadRowCell.innerHTML = "Travis CI";
+				}
+				if (ciProviders.includes("github")) {
+					var tableHeadRowCell = tableHeadRow.insertCell();
+					tableHeadRowCell.innerHTML = "GitHub Actions";
 				}
 				if (ciProviders.includes("gitlab")) {
 					var tableHeadRowCell = tableHeadRow.insertCell();
@@ -325,6 +330,12 @@
 										+ "[T]"
 									+ "</a>";
 							}
+							if (ciProviders.includes("github")) {
+								cellLinks.innerHTML += ""
+									+ "<a title=\"GitHub Actions\"  href=\"https://github.com/mtransitapps/"+project+"-gradle/actions\" rel=\"nofollow\">"
+										+ "[G]"
+									+ "</a>";
+							}
 							cellLinks.innerHTML += ""
 								+ "<a title=\"BETA testing\"  href=\"https://play.google.com/apps/testing/"+pkg+"\" rel=\"nofollow\">"
 									+ "[B]"
@@ -354,6 +365,14 @@
 								"<a href=\"https://travis-ci.com/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
 									+ "<img alt=\"Travis CI\""
 										+ "src=\"https://api.travis-ci.com/mtransitapps/"+project+"-gradle.svg?branch="+branch+"\">"
+								+ "</a>";
+						}
+						if (ciProviders.includes("github")) {
+							var cellTravisCI = row.insertCell(c++);
+							cellTravisCI.innerHTML =
+								"<a href=\" https://github.com/mtransitapps/"+project+"-gradle/actions\" rel=\"nofollow\">"
+									+ "<img alt=\"GitHub Actions\""
+										+ "src=\" https://github.com/mtransitapps/"+project+"-gradle/actions/workflows/mt-sync-code-data.yml/badge.svg\">"
 								+ "</a>";
 						}
 						if (ciProviders.includes("gitlab")) {

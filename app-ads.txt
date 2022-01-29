@@ -32,3 +32,11 @@ rhythmone.com, 4201299756, RESELLER, a670c89d4a324e47
 smartadserver.com, 3117, RESELLER
 startapp.com, smt, RESELLER
 xad.com, 241, RESELLER, 81cbf0a75a5e0e9a
+applovin.com, 6b6c458ba573f995ca9d213ead09c13e, DIRECT
+adcolony.com, 5d8cbf6671c93a42, RESELLER, 1ad675c9de6b5176
+rubiconproject.com, 16356, RESELLER, 0bfd66d529a55807
+openx.com, 540785403, RESELLER, 6a698e2ec38604c6
+pubmatic.com, 159509, RESELLER, 5d62403b186f2ace
+pubnative.net, 1007170, RESELLER, d641df8625486a7b
+Verve.com, 15290, RESELLER, 0c8f5958fc2d6270
+indexexchange.com, 192829, RESELLER, 50b1c356f2c5c8f

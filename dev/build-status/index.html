@@ -17,7 +17,10 @@
 			}
 		</style>
 		<script type="text/javascript">
-			window.onload = function() {
+			function sleep(ms) {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+			window.onload = async function() {
 				var projects = [
 					"mtransit-for-android",
 					"ca-airdrie-transit-bus",
@@ -262,10 +265,10 @@
 				}
 				var ciProviders = [
 					"circleci",
-					"travis",
+					// "travis",
 					"github",
-					"gitlab",
-					"bitise"
+					// "gitlab",
+					// "bitise"
 				];
 				if (urlParams.has('ci')) {
 					ciProviders = urlParams.get('ci').split(",")
@@ -376,12 +379,31 @@
 								+ "</a>";
 						}
 						if (ciProviders.includes("github")) {
-							var cellTravisCI = row.insertCell(c++);
-							cellTravisCI.innerHTML =
-								"<a href=\" https://github.com/mtransitapps/"+project+"-gradle/actions\" rel=\"nofollow\">"
-									+ "<img alt=\"GitHub Actions\""
-										+ "src=\" https://github.com/mtransitapps/"+project+"-gradle/actions/workflows/mt-sync-code-data.yml/badge.svg\">"
-								+ "</a>";
+							var cellGitHubAction = row.insertCell(c++);
+							if (project == "mtransit-for-android") {
+								var workflowName="MT build";
+								cellGitHubAction.innerHTML =
+									"<a href=\" https://github.com/mtransitapps/"+project+"-gradle/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+										+ "<img alt=\"GitHub Actions\""
+											+ "src=\" https://github.com/mtransitapps/"+project+"-gradle/actions/workflows/mt-build.yml/badge.svg?branch="+branch+"\">"
+									+ "</a>";
+								if (branch == "mmathieum") {
+									var workflowName="MT dependency update";
+									cellGitHubAction.innerHTML += "&nbsp;";
+									cellGitHubAction.innerHTML +=
+										"<a href=\" https://github.com/mtransitapps/"+project+"-gradle/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+											+ "<img alt=\"GitHub Actions\""
+												+ "src=\" https://github.com/mtransitapps/"+project+"-gradle/actions/workflows/mt-dependency-update.yml/badge.svg?branch="+branch+"\">"
+										+ "</a>";
+								}
+							} else {
+								var workflowName="MT sync code & data";
+								cellGitHubAction.innerHTML =
+									"<a href=\" https://github.com/mtransitapps/"+project+"-gradle/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+										+ "<img alt=\"GitHub Actions\""
+											+ "src=\" https://github.com/mtransitapps/"+project+"-gradle/actions/workflows/mt-sync-code-data.yml/badge.svg?branch="+branch+"\">"
+									+ "</a>";
+							}
 						}
 						if (ciProviders.includes("gitlab")) {
 							var cellGitLab = row.insertCell(c++);
@@ -407,6 +429,9 @@
 								cellBitrise.innerHTML = "<!-- TODO Bitrise -->";
 							}
 						}
+					}
+					if (ciProviders.includes("circleci")) {
+						await sleep(33); // wait for 0.033 seconds #CircleCI
 					}
 				}
 				for (p = 0; p < size; p++) {

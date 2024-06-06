@@ -7,6 +7,8 @@
 			.icon {
 				height: 13px;
 				width: 13px;
+				padding-right: 3px;
+				padding-left: 3px;
 			}
 			table, th, td {
 				border: 1px solid black;
@@ -94,7 +96,6 @@
 					"ca-red-deer-transit-bus",
 					"ca-regina-transit-bus",
 					"ca-richelieu-citvr-bus",
-					"ca-roussillon-citrous-bus",
 					"ca-saint-john-transit-bus",
 					"ca-saskatoon-transit-bus",
 					"ca-shawinigan-rtcs-bus",
@@ -211,7 +212,6 @@
 					"org.mtransit.android.ca_red_deer_transit_bus",
 					"org.mtransit.android.ca_regina_transit_bus",
 					"org.mtransit.android.ca_richelieu_citvr_bus",
-					"org.mtransit.android.ca_roussillon_citrous_bus",
 					"org.mtransit.android.ca_saint_john_transit_bus",
 					"org.mtransit.android.ca_saskatoon_transit_bus",
 					"org.mtransit.android.ca_shawinigan_rtcs_bus",
@@ -319,63 +319,68 @@
 							var cellProjectNameWithIcon = row.insertCell(c);
 							cellProjectNameWithIcon.rowSpan = ""+branches.length+"";
 							cellProjectNameWithIcon.innerHTML =
-								"<img class=\"icon\" src=\"https://raw.githubusercontent.com/mtransitapps/"+projectUrl+"/"+branch+"/src/main/play/listings/en-US/graphics/icon/1.png\">"
+								"<img class=\"icon\" src=\"https://raw.githubusercontent.com/mtransitapps/"+projectUrl+"/"+branch+"/app-android/src/main/play/listings/en-US/graphics/icon/1.png\">"
 								+ project;
 							c++;
 							var cellLinks = row.insertCell(c);
 							cellLinks.rowSpan = ""+branches.length+"";
 							cellLinks.innerHTML = "";
 							cellLinks.innerHTML += ""
-								+ "<a title=\"GitHub Gradle project\" href=\"https://github.com/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
-									+ "[G]"
+								+ "<a title=\"Git repository\" href=\"https://github.com/mtransitapps/"+projectUrl+"/\" rel=\"nofollow\">"
+									// + "📁"
+									+ "<img class=\"icon\" alt=\"[R]\" src=\"https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png\" />"
 								+ "</a>";
 							if (ciProviders.includes("circleci")) {
 								cellLinks.innerHTML += ""
-									+ "<a title=\"CircleCI\" href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
-										+ "[C]"
+									+ "<a title=\"CircleCI\" href=\"https://circleci.com/gh/mtransitapps/"+projectUrl+"/\" rel=\"nofollow\">"
+										+ "<img class=\"icon\" alt=\"[C]\" src=\"https://img.icons8.com/?size=13&id=ep4D1m8k13qZ&format=png\" />"
 									+ "</a>";
 							}
 							if (ciProviders.includes("travis")) {
 								cellLinks.innerHTML += ""
-									+ "<a title=\"Travis CI\"  href=\"https://travis-ci.com/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+									+ "<a title=\"Travis CI\"  href=\"https://travis-ci.com/mtransitapps/"+projectUrl+"/\" rel=\"nofollow\">"
 										+ "[T]"
 									+ "</a>";
 							}
 							if (ciProviders.includes("github")) {
 								cellLinks.innerHTML += ""
-									+ "<a title=\"GitHub Actions\"  href=\"https://github.com/mtransitapps/"+project+"-gradle/actions\" rel=\"nofollow\">"
-										+ "[G]"
+									+ "<a title=\"GitHub Actions\"  href=\"https://github.com/mtransitapps/"+projectUrl+"/actions\" rel=\"nofollow\">"
+										// https://github.githubassets.com/favicons/favicon.png
+										+ "<img class=\"icon\" alt=\"[G]\" src=\"https://github.githubassets.com/assets/actions-icon-actions-61925a4b8822.svg\" />"
 									+ "</a>";
 							}
 							cellLinks.innerHTML += ""
 								+ "<a title=\"BETA testing\"  href=\"https://play.google.com/apps/testing/"+pkg+"\" rel=\"nofollow\">"
-									+ "[B]"
+									// + "[B]"
+									// + "&#946;"
+									+ "<img class=\"icon\" alt=\"[B]\" src=\"https://www.gstatic.com/play-apps-publisher/play_console_favicon.png\" />"
 								+ "</a>";
 							cellLinks.innerHTML += ""
 								+ "<a title=\"Google Play Store\" href=\"https://play.google.com/store/apps/details?id="+pkg+"\" rel=\"nofollow\">"
-									+ "[S]"
+									// + "[S]"
+									+ "<img class=\"icon\" alt=\"[S]\" src=\"https://www.gstatic.com/android/market_images/web/favicon_v3.ico\" />"
 								+ "</a>";
 							c++;
 						}
 						var cellBranchName = row.insertCell(c++);
 						cellBranchName.innerHTML = ""
-								+ "<a title=\"GitHub Gradle project branch\" href=\"https://github.com/mtransitapps/"+project+"-gradle/tree/"+branch+"\" rel=\"nofollow\">"
+								+ "<a title=\"GitHub Gradle project branch\" href=\"https://github.com/mtransitapps/"+projectUrl+"/tree/"+branch+"\" rel=\"nofollow\">"
 									+ branch
 								+ "</a>";
 						if (ciProviders.includes("circleci")) {
 							var cellCircleCI = row.insertCell(c++);
 							cellCircleCI.innerHTML =
-								"<a href=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/tree/"+branch+"\" rel=\"nofollow\">"
+								"<a href=\"https://circleci.com/gh/mtransitapps/"+projectUrl+"/tree/"+branch+"\" rel=\"nofollow\">"
 									+ "<img alt=\"CircleCI\""
-										+ "src=\"https://circleci.com/gh/mtransitapps/"+project+"-gradle/tree/"+branch+".svg?style=svg\">"
+										+ "src=\"https://circleci.com/gh/mtransitapps/"+projectUrl+"/tree/"+branch+".svg?style=svg\">"
 								+ "</a>";
 						}
 						if (ciProviders.includes("travis")) {
 							var cellTravisCI = row.insertCell(c++);
 							cellTravisCI.innerHTML =
-								"<a href=\"https://travis-ci.com/mtransitapps/"+project+"-gradle/\" rel=\"nofollow\">"
+								"<a href=\"https://travis-ci.com/mtransitapps/"+projectUrl+"/\" rel=\"nofollow\">"
 									+ "<img alt=\"Travis CI\""
-										+ "src=\"https://api.travis-ci.com/mtransitapps/"+project+"-gradle.svg?branch="+branch+"\">"
+										+ "src=\"https://api.travis-ci.com/mtransitapps/"+projectUrl+".svg?branch="+branch+"\">"
 								+ "</a>";
 						}
 						if (ciProviders.includes("github")) {
@@ -383,25 +388,25 @@
 							if (project == "mtransit-for-android") {
 								var workflowName="MT build";
 								cellGitHubAction.innerHTML =
-									"<a href=\" https://github.com/mtransitapps/"+project+"-gradle/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+									"<a href=\" https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
 										+ "<img alt=\"GitHub Actions\""
-											+ "src=\" https://github.com/mtransitapps/"+project+"-gradle/actions/workflows/mt-build.yml/badge.svg?branch="+branch+"\">"
+											+ "src=\" https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/mt-build.yml/badge.svg?branch="+branch+"\">"
 									+ "</a>";
 								if (branch == "mmathieum") {
 									var workflowName="MT dependency update";
 									cellGitHubAction.innerHTML += "&nbsp;";
 									cellGitHubAction.innerHTML +=
-										"<a href=\" https://github.com/mtransitapps/"+project+"-gradle/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+										"<a href=\" https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
 											+ "<img alt=\"GitHub Actions\""
-												+ "src=\" https://github.com/mtransitapps/"+project+"-gradle/actions/workflows/mt-dependency-update.yml/badge.svg?branch="+branch+"\">"
+												+ "src=\" https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/mt-dependency-update.yml/badge.svg?branch="+branch+"\">"
 										+ "</a>";
 								}
 							} else {
 								var workflowName="MT sync code & data";
 								cellGitHubAction.innerHTML =
-									"<a href=\" https://github.com/mtransitapps/"+project+"-gradle/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+									"<a href=\" https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
 										+ "<img alt=\"GitHub Actions\""
-											+ "src=\" https://github.com/mtransitapps/"+project+"-gradle/actions/workflows/mt-sync-code-data.yml/badge.svg?branch="+branch+"\">"
+											+ "src=\" https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/mt-sync-code-data.yml/badge.svg?branch="+branch+"\">"
 									+ "</a>";
 							}
 						}
@@ -409,9 +414,9 @@
 							var cellGitLab = row.insertCell(c++);
 							if (project == "mtransit-for-android") {
 								cellGitLab.innerHTML =
-									"<a href=\"https://gitlab.com/mtransitapps/"+project+"-gradle/pipelines\" rel=\"nofollow\">"
+									"<a href=\"https://gitlab.com/mtransitapps/"+projectUrl+"/pipelines\" rel=\"nofollow\">"
 										+ "<img alt=\"GitLab\""
-											+ "src=\"https://gitlab.com/mtransitapps/"+project+"-gradle/badges/"+branch+"/pipeline.svg\">"
+											+ "src=\"https://gitlab.com/mtransitapps/"+projectUrl+"/badges/"+branch+"/pipeline.svg\">"
 									+ "</a>";
 							} else {
 								cellGitLab.innerHTML = "<!-- TODO GitLab -->";

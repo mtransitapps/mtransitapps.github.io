@@ -389,10 +389,11 @@
 							var cellGitHubAction = row.insertCell(c++);
 							if (project == "mtransit-for-android") {
 								var workflowName="MT build";
+								var workflowFileName="mt-build.yml";
 								cellGitHubAction.innerHTML =
 									"<a href=\" https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
 										+ "<img alt=\"GH:"+workflowName+"\""
-											+ "src=\" https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/mt-build.yml/badge.svg?branch="+branch+"\">"
+											+ "src=\" https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
 									+ "</a>";
 								// if (branch == "mmathieum") {
 								// 	var workflowName="MT dependency update";
@@ -405,17 +406,19 @@
 								// }
 							}
 							var workflowName="MT sync code & data";
+							var workflowFileName="mt-sync-code-data.yml";
 							cellGitHubAction.innerHTML +=
 								"<a href=\" https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
 									+ "<img alt=\"GH:"+workflowName+"\""
-										+ "src=\" https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/mt-sync-code-data.yml/badge.svg?branch="+branch+"\">"
+										+ "src=\" https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
 								+ "</a>";
 							if (project != "mtransit-for-android" && !project.endsWith("-bike")) {
 								var workflowName="MT download data";
+								var workflowFileName="mt-download-data.yml";
 								cellGitHubAction.innerHTML +=
 									"<a href=\" https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
 										+ "<img alt=\"GH:"+workflowName+"\""
-											+ "src=\" https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/mt-download-data.yml/badge.svg?branch="+branch+"\">"
+											+ "src=\" https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
 									+ "</a>";
 							}
 						}
@@ -445,7 +448,7 @@
 						}
 					}
 					if (ciProviders.includes("circleci")) {
-						await sleep(33); // wait for 0.033 seconds #CircleCI
+						await sleep(77); // wait for 0.033 seconds #CircleCI
 					}
 				}
 				for (p = 0; p < size; p++) {

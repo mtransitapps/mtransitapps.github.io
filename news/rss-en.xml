@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MonTransit</title>
+    <description>Latest news about the MonTransit app</description>
+    <link>https://mtransitapps.github.io/news/</link>
+    <language>en-us</language>
+    <pubDate>Wed, 2 Apr 2025 18:00:00 EDT</pubDate>
+    <lastBuildDate>Wed, 2 Apr 2025 18:00:00 EDT</lastBuildDate>
+    <atom:link href="https://mtransitapps.github.io/news/rss-en.xml" rel="self" type="application/rss+xml" />
+    <item>
+     <title>Last Month in MonTransit</title>
+     <link>https://mtransitapps.github.io/news/</link>
+     <description>improvements to latest news📰 loading and text search🔍 user interface, 154 schedule updates🔁…</description>
+     <pubDate>Wed, 2 Apr 2025 18:00:00 EDT</pubDate>
+     <guid isPermaLink="false">2025-04-02_18-00-00_last_month</guid>
+    </item>
+  </channel>
+</rss>

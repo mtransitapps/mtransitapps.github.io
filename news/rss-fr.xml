@@ -5,15 +5,50 @@
     <description>Dernières nouvelles sur l'application MonTransit</description>
     <link>https://mtransitapps.github.io/news/</link>
     <language>fr-fr</language>
-    <pubDate>Wed, 2 Apr 2025 18:00:00 EDT</pubDate>
-    <lastBuildDate>Wed, 2 Apr 2025 18:00:00 EDT</lastBuildDate>
+    <pubDate>Mon, 2 Jun 2025 18:00:00 EDT</pubDate>
+    <lastBuildDate>Mon, 2 Jun 2025 18:00:00 EDT</lastBuildDate>
     <atom:link href="https://mtransitapps.github.io/news/rss-en.xml" rel="self" type="application/rss+xml" />
+    <item>
+     <title>Le mois dernier dans MonTransit</title>
+     <link>https://mtransitapps.github.io/news/</link>
+     <description>heures⌚ toujours affichées dans le fuseau horaire local📍 au lieu du fuseau horaire de l’appareil📱, 163 mises à jours🔁 des horaires …</description>
+     <pubDate>Mon, 2 Jun 2025 18:00:00 EDT</pubDate>
+     <guid isPermaLink="false">2025-06-02_18-00-00_last_month</guid>
+    </item>
+    <item>
+     <title>Le mois dernier dans MonTransit</title>
+     <link>https://mtransitapps.github.io/news/</link>
+     <description>rendre plus facile et plus rapide🚄 l'ajout de nouvelles🆕 agences de transport (en cours)🔄, 271 mises à jours🔁 des horaires …</description>
+     <pubDate>Fri, 2 May 2025 18:00:00 EDT</pubDate>
+     <guid isPermaLink="false">2025-05-02_18-00-00_last_month</guid>
+    </item>
     <item>
      <title>Le mois dernier dans MonTransit</title>
      <link>https://mtransitapps.github.io/news/</link>
      <description>amélioration du chargement des dernières nouvelles📰 et de l'interface utilisateur de la recherche🔍 textuelle, 154 mises à jours🔁 des horaires …</description>
      <pubDate>Wed, 2 Apr 2025 18:00:00 EDT</pubDate>
      <guid isPermaLink="false">2025-04-02_18-00-00_last_month</guid>
+    </item>
+    <item>
+     <title>Le mois dernier dans MonTransit</title>
+     <link>https://mtransitapps.github.io/news/</link>
+     <description>corrections d’un problème🐛 avec l’interface Bord-à-Bord sur Android 7-10, 131 mises à jours🔁 des horaires …</description>
+     <pubDate>Sun, 2 Mar 2025 18:00:00 EDT</pubDate>
+     <guid isPermaLink="false">2025-03-02_18-00-00_last_month</guid>
+    </item>
+    <item>
+     <title>Le mois dernier dans MonTransit</title>
+     <link>https://mtransitapps.github.io/news/</link>
+     <description>corrections d'anomalies & amélioration des performances, 218 mises à jours🔁 des horaires …</description>
+     <pubDate>Sun, 2 Feb 2025 18:00:00 EDT</pubDate>
+     <guid isPermaLink="false">2025-02-02_18-00-00_last_month</guid>
+    </item>
+    <item>
+     <title>Le mois dernier dans MonTransit</title>
+     <link>https://mtransitapps.github.io/news/</link>
+     <description>compatibilité complète avec Android 15🍦 incluant l’interface utilisateur✨ Bord-à-Bord↕️, lecteur📰 vidéo📺 des nouvelles, 217 mises à jours🔁 des horaires …</description>
+     <pubDate>Thu, 2 Jan 2025 18:00:00 EDT</pubDate>
+     <guid isPermaLink="false">2025-01-02_18-00-00_last_month</guid>
     </item>
   </channel>
 </rss>

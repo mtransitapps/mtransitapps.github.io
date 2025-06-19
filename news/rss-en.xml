@@ -9,46 +9,78 @@
     <lastBuildDate>Mon, 2 Jun 2025 18:00:00 EDT</lastBuildDate>
     <atom:link href="https://mtransitapps.github.io/news/rss-en.xml" rel="self" type="application/rss+xml" />
     <item>
-     <title>Last Month in MonTransit</title>
-     <link>https://mtransitapps.github.io/news/</link>
-     <description>always show times⌚ in local📍 time-zone instead of device📱 time-zone, 163 schedule updates🔁…</description>
-     <pubDate>Mon, 2 Jun 2025 18:00:00 EDT</pubDate>
-     <guid isPermaLink="false">2025-06-02_18-00-00_last_month</guid>
+      <guid isPermaLink="false">2025-06-02_18-00-00_last_month</guid>
+      <pubDate>Mon, 2 Jun 2025 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>always show times⌚ in local📍 time-zone instead of device📱 time-zone, 163 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
-     <title>Last Month in MonTransit</title>
-     <link>https://mtransitapps.github.io/news/</link>
-     <description>making it easier &amp; faster🚄 to add new🆕 transit agencies (WIP)🔄, 271 schedule updates🔁…</description>
-     <pubDate>Fri, 2 May 2025 18:00:00 EDT</pubDate>
-     <guid isPermaLink="false">2025-05-02_18-00-00_last_month</guid>
+      <guid isPermaLink="false">2025-05-02_18-00-00_last_month</guid>
+      <pubDate>Fri, 2 May 2025 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>making it easier &amp; faster🚄 to add new🆕 transit agencies (WIP)🔄, 271 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
-     <title>Last Month in MonTransit</title>
-     <link>https://mtransitapps.github.io/news/</link>
-     <description>improvements to latest news📰 loading and text search🔍 user interface, 154 schedule updates🔁…</description>
-     <pubDate>Wed, 2 Apr 2025 18:00:00 EDT</pubDate>
-     <guid isPermaLink="false">2025-04-02_18-00-00_last_month</guid>
+      <guid isPermaLink="false">2025-04-02_18-00-00_last_month</guid>
+      <pubDate>Wed, 2 Apr 2025 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>improvements to latest news📰 loading and text search🔍 user interface, 154 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
-     <title>Last Month in MonTransit</title>
-     <link>https://mtransitapps.github.io/news/</link>
-     <description>fixed bug🐛 with Edge-to-Edge UI on Android 7-10, 131 schedule updates🔁…</description>
-     <pubDate>Sun, 2 Mar 2025 18:00:00 EDT</pubDate>
-     <guid isPermaLink="false">2025-03-02_18-00-00_last_month</guid>
+      <guid isPermaLink="false">2025-03-02_18-00-00_last_month</guid>
+      <pubDate>Sun, 2 Mar 2025 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>fixed bug🐛 with Edge-to-Edge UI on Android 7-10, 131 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
-     <title>Last Month in MonTransit</title>
-     <link>https://mtransitapps.github.io/news/</link>
-     <description>bug fixes &amp; performance improvements, 218 schedule updates🔁…</description>
-     <pubDate>Sun, 2 Feb 2025 18:00:00 EDT</pubDate>
-     <guid isPermaLink="false">2025-02-02_18-00-00_last_month</guid>
+      <guid isPermaLink="false">2025-02-02_18-00-00_last_month</guid>
+      <pubDate>Sun, 2 Feb 2025 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>bug fixes &amp; performance improvements, 218 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
-     <title>Last Month in MonTransit</title>
-     <link>https://mtransitapps.github.io/news/</link>
-     <description>full compatibility with Android 15 Vanilla Ice Cream🍦 including Edge-to-Edge↕️ UI✨, news📰 video📺 player, 217 schedule updates🔁…</description>
-     <pubDate>Thu, 2 Jan 2025 18:00:00 EDT</pubDate>
-     <guid isPermaLink="false">2025-01-02_18-00-00_last_month</guid>
+      <guid isPermaLink="false">2025-01-02_18-00-00_last_month</guid>
+      <pubDate>Thu, 2 Jan 2025 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>full compatibility with Android 15 Vanilla Ice Cream🍦 including Edge-to-Edge↕️ UI✨, news📰 video📺 player, 217 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-12-02_18-00-00_last_month</guid>
+      <pubDate>Mon, 2 Dec 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>added real-time🛰️ service alerts⚠️ℹ️ to GO Transit 🚍🚆 &amp; UP Express🚆, news📰 to BC Transit🚍, 145 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-11-02_18-00-00_last_month</guid>
+      <pubDate>Sat, 2 Nov 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>initial compatibility with Android 15 Vanilla Ice Cream🍦, 173 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-10-02_18-00-00_last_month</guid>
+      <pubDate>Wed, 2 Oct 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>new dots UI 🟦🟥🟩⬜ for bike🚲 stations availability, less⬇️ annoying😖 "new schedule available" prompts💬, 198 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-09-02_18-00-00_last_month</guid>
+      <pubDate>Mon, 2 Sep 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>
+        reached 1M+ downloads⬇️ on Google Play Store!💚, better nearby🎯 connections🔀 in stop/station screen #UserRequest, improved real time🛰️ service alerts severityℹ️⚠️ and data updates reliability🦾, 252 service updates🔁…
+        <BR /><BR />
+        <IMG SRC="data/2024-09-02_google_play_store_1M.png" WIDTH="70%" HEIGHT="70%" />
+      </description>
+      <link>https://mtransitapps.github.io/news/</link>
     </item>
   </channel>
 </rss>

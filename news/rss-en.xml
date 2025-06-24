@@ -50,6 +50,7 @@
       <description>full compatibility with Android 15 Vanilla Ice Cream🍦 including Edge-to-Edge↕️ UI✨, news📰 video📺 player, 217 schedule updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
+    <!-- 2025 -->
     <item>
       <guid isPermaLink="false">2024-12-02_18-00-00_last_month</guid>
       <pubDate>Mon, 2 Dec 2024 18:00:00 EDT</pubDate>
@@ -82,5 +83,62 @@
       </description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
+    <item>
+      <guid isPermaLink="false">2024-08-02_18-00-00_last_month</guid>
+      <pubDate>Sun, 2 Aug 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>faster💨 & more secure🔑 data updates (also ignore insignificant🤏 data changes), 283 service updates🔁</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-07-02_18-00-00_last_month</guid>
+      <pubDate>Thu, 2 Jul 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>added Canada VIA Rail trains🚆 https://bit.ly/MonTransitVIARailTrains, 267 service updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-06-02_18-00-00_last_month</guid>
+      <pubDate>Mon, 2 Jun 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>getting ready for latest bike sharing data updates, modernizing code architecture, 263 service updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-05-02_18-00-00_last_month</guid>
+      <pubDate>Fri, 2 May 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>bug fixes &amp; performance improvements, 236 service updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-04-02_18-00-00_last_month</guid>
+      <pubDate>Wed, 2 Apr 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>bug fixes &amp; performance improvements, 206 service updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-03-02_18-00-00_last_month</guid>
+      <pubDate>Sun, 2 Mar 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>dded transit agencies colors🟦🟥🟩 to Home screen top buttons✨ &amp; in-app ratings⭐ dialog🙏, started collecting performance💨 data📊, 286 service updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-02-02_18-00-00_last_month</guid>
+      <pubDate>Sun, 2 Feb 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>mproved route short name and ➡️direction as well as service alertsℹ️⚠️ UI✨, updated service alerts⚠️ for BC Transit buses🚍, said goodbye👋 to Android 5 Lollipop🍭 (2014) and Android 6 Marshmallow ⬜ (2015), 251 service updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-01-02_18-00-00_last_month</guid>
+      <pubDate>Thu, 2 Jan 2024 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>started UI improvements✨ , added🆕 service alerts⚠️ to Barrie Transit, Brampton Transit, Calgary Transit, Cornwall Transit, ETS, GRT, MiWay, StAT, Strathcona County, 276 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <!-- 2024 -->
   </channel>
 </rss>

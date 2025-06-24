@@ -50,6 +50,7 @@
       <description>compatibilité complète avec Android 15🍦 incluant l’interface utilisateur✨ Bord-à-Bord↕️, lecteur📰 vidéo📺 des nouvelles, 217 mises à jours🔁 des horaires …</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
+    <!-- 2025 -->
     <item>
       <guid isPermaLink="false">2024-12-02_18-00-00_last_month</guid>
       <pubDate>Mon, 2 Dec 2024 18:00:00 EDT</pubDate>
@@ -76,11 +77,65 @@
       <pubDate>Mon, 2 Sep 2024 18:00:00 EDT</pubDate>
       <title>Le mois dernier dans MonTransit</title>
       <description>
-        atteint 1M+ téléchargements⬇️ sur le Google Play Store💚, meilleure liste des correspondances 🔀 à proximité pour un arrêt/gare/… #DemandeUtilisateur , amélioration de la sévéritéℹ️⚠️ des alertes de services en temps-réel🛰️, 252 mises à jours🔁 des horaires …
-        <BR /><BR />
-        <IMG SRC="data/2024-09-02_google_play_store_1M.png" WIDTH="70%" HEIGHT="70%" />
-      </description>
+        atteint 1M+ téléchargements⬇️ sur le Google Play Store💚, meilleure liste des correspondances 🔀 à proximité pour un arrêt/gare/… #DemandeUtilisateur , amélioration de la sévéritéℹ️⚠️ des alertes de services en temps-réel🛰️, 252 mises à jours🔁 des horaires …<BR /><BR /><IMG SRC="data/2024-09-02_google_play_store_1M.png" WIDTH="70%" HEIGHT="70%" /></description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
+    <item>
+      <guid isPermaLink="false">2024-08-02_18-00-00_last_month</guid>
+      <pubDate>Sun, 2 Aug 2024 18:00:00 EDT</pubDate>
+      <title>Le mois dernier dans MonTransit</title>
+      <description>mises à jours des données plus rapides💨 et sécurisées🔑 (également ignore les changements négligeable🤏), 283 mises à jours🔁 des horaires …</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-07-02_18-00-00_last_month</guid>
+      <pubDate>Thu, 2 Jul 2024 18:00:00 EDT</pubDate>
+      <title>Le mois dernier dans MonTransit</title>
+      <description>ajout des trains🚆 VIA Rail https://bit.ly/MonTransitVIARailTrains, 267 mises à jours🔁 des horaires …</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-06-02_18-00-00_last_month</guid>
+      <pubDate>Mon, 2 Jun 2024 18:00:00 EDT</pubDate>
+      <title>Le mois dernier dans MonTransit</title>
+      <description>préparations pour les dernières mises à jour des données de vélos partagés, modernisation de l'architecture du code,, 263 mises à jours🔁 des horaires …</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-05-02_18-00-00_last_month</guid>
+      <pubDate>Fri, 2 May 2024 18:00:00 EDT</pubDate>
+      <title>Le mois dernier dans MonTransit</title>
+      <description>corrections d'anomalies &amp; amélioration des performances, 236 mises à jours🔁 des horaires …</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-04-02_18-00-00_last_month</guid>
+      <pubDate>Wed, 2 Apr 2024 18:00:00 EDT</pubDate>
+      <title>Le mois dernier dans MonTransit</title>
+      <description>corrections d'anomalies &amp; amélioration des performances, 206 mises à jours🔁 des horaires …</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-03-02_18-00-00_last_month</guid>
+      <pubDate>Sun, 2 Mar 2024 18:00:00 EDT</pubDate>
+      <title>Le mois dernier dans MonTransit</title>
+      <description>ajout des couleurs🟦🟥🟩 des agences de transport aux boutons en haut de l'écran d'Accueil✨ &amp; dialogue pour noter⭐ l'app🙏, début de la collecte des données📊 de performance💨. 251 mises à jours🔁 des horaires …</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-02-02_18-00-00_last_month</guid>
+      <pubDate>Sun, 2 Feb 2024 18:00:00 EDT</pubDate>
+      <title>Le mois dernier dans MonTransit</title>
+      <description>amélioration des l'interface utilisateur pour le nom court des lignes et la ➡️direction ainsi que les alertesℹ️⚠️ de service, mises à jour des alertes⚠️ de service pour les autobus🚍 de BC Transit, au revoir👋 Android 5 Lollipop🍭 (2014) and Android 6 Marshmallow ⬜ (2015). 251 mises à jours🔁 des horaires …</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <item>
+      <guid isPermaLink="false">2024-01-02_18-00-00_last_month</guid>
+      <pubDate>Thu, 2 Jan 2024 18:00:00 EDT</pubDate>
+      <title>Le mois dernier dans MonTransit</title>
+      <description>améliorations de l'interface utilisateur commencées, alertes de services ajoutées pour Barrie Transit, Brampton Transit, Calgary Transit, Cornwall Transit, ETS, GRT, MiWay, StAT, Strathcona County, 276 mises à jours🔁 des horaires …</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
+    <!-- 2024 -->
   </channel>
 </rss>

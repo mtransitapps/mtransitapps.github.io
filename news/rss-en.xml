@@ -5,9 +5,17 @@
     <description>Latest news about the MonTransit app</description>
     <link>https://mtransitapps.github.io/news/</link>
     <language>en-us</language>
-    <pubDate>Mon, 2 Jun 2025 18:00:00 EDT</pubDate>
-    <lastBuildDate>Mon, 2 Jun 2025 18:00:00 EDT</lastBuildDate>
+    <pubDate>Wed, 2 Jul 2025 18:00:00 EDT</pubDate>
+    <lastBuildDate>Wed, 2 Jul 2025 18:00:00 EDT</lastBuildDate>
     <atom:link href="https://mtransitapps.github.io/news/rss-en.xml" rel="self" type="application/rss+xml" />
+    <!-- ITEMS -->
+    <item>
+      <guid isPermaLink="false">2025-07-02_18-00-00_last_month</guid>
+      <pubDate>Wed, 2 Jul 2025 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>added🆕 Williams Lake Transit buses🚌, compatibility with new Winnipeg Transit API🔀, better app news📰, 179 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
     <item>
       <guid isPermaLink="false">2025-06-02_18-00-00_last_month</guid>
       <pubDate>Mon, 2 Jun 2025 18:00:00 EDT</pubDate>
@@ -125,7 +133,7 @@
       <guid isPermaLink="false">2024-02-02_18-00-00_last_month</guid>
       <pubDate>Fri, 2 Feb 2024 18:00:00 EDT</pubDate>
       <title>Last Month in MonTransit</title>
-      <description>mproved route short name and ➡️direction as well as service alertsℹ️⚠️ UI✨, updated service alerts⚠️ for BC Transit buses🚍, said goodbye👋 to Android 5 Lollipop🍭 (2014) and Android 6 Marshmallow ⬜ (2015), 251 service updates🔁…</description>
+      <description>improved route short name and ➡️direction as well as service alertsℹ️⚠️ UI✨, updated service alerts⚠️ for BC Transit buses🚍, said goodbye👋 to Android 5 Lollipop🍭 (2014) and Android 6 Marshmallow ⬜ (2015), 251 service updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>

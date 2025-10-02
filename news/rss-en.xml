@@ -5,10 +5,17 @@
     <description>Latest news about the MonTransit app</description>
     <link>https://mtransitapps.github.io/news/</link>
     <language>en-us</language>
-    <pubDate>Tue, 2 Sep 2025 18:00:00 EDT</pubDate>
-    <lastBuildDate>Tue, 2 Sep 2025 18:00:00 EDT</lastBuildDate>
+    <pubDate>Thu, 2 Oct 2025 18:00:00 EDT</pubDate>
+    <lastBuildDate>Thu, 2 Oct 2025 18:00:00 EDT</lastBuildDate>
     <atom:link href="https://mtransitapps.github.io/news/rss-en.xml" rel="self" type="application/rss+xml" />
     <!-- ITEMS -->
+    <item>
+      <guid isPermaLink="false">2025-10-02_18-00-00_last_month</guid>
+      <pubDate>Thu, 2 Oct 2025 18:00:00 EDT</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>Twitter/X📰 and YouTube📺 news providers improvements✨, getting ready for new🆕 exo/RTL/STS real-time🛰️ Chrono⚜️ API, 188 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
     <item>
       <guid isPermaLink="false">2025-09-02_18-00-00_last_month</guid>
       <pubDate>Tue, 2 Sep 2025 18:00:00 EDT</pubDate>

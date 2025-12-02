@@ -5,13 +5,13 @@
     <description>Dernières nouvelles sur l'application MonTransit</description>
     <link>https://mtransitapps.github.io/news/</link>
     <language>fr-fr</language>
-    <pubDate>The, 2 Dec 2025 18:00:00 EST</pubDate>
-    <lastBuildDate>The, 2 Dec 2025 18:00:00 EST</lastBuildDate>
+    <pubDate>Tue, 2 Dec 2025 18:00:00 EST</pubDate>
+    <lastBuildDate>Tue, 2 Dec 2025 18:00:00 EST</lastBuildDate>
     <atom:link href="https://mtransitapps.github.io/news/rss-en.xml" rel="self" type="application/rss+xml" />
     <!-- ITEMS -->
     <item>
       <guid isPermaLink="false">2025-12-02_18-00-00_last_month</guid>
-      <pubDate>The, 2 Dec 2025 18:00:00 EST</pubDate>
+      <pubDate>Tue, 2 Dec 2025 18:00:00 EST</pubDate>
       <title>Le mois dernier dans MonTransit</title>
       <description>plusieurs petites modifications de l’interface utilisateur✨ (dans l’écran Favoris…), ajout d’information🗃️ statique pour la compatibilité avec de futures fonctionnalités temps-réel🛰️, 182 schedule updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>

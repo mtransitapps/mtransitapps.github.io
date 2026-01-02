@@ -5,10 +5,17 @@
     <description>Latest news about the MonTransit app</description>
     <link>https://mtransitapps.github.io/news/</link>
     <language>en-us</language>
-    <pubDate>Tue, 2 Dec 2025 18:00:00 EST</pubDate>
-    <lastBuildDate>Tue, 2 Dec 2025 18:00:00 EST</lastBuildDate>
+    <pubDate>Fri, 2 Dec 2026 18:00:00 EST</pubDate>
+    <lastBuildDate>Fri, 2 Dec 2026 18:00:00 EST</lastBuildDate>
     <atom:link href="https://mtransitapps.github.io/news/rss-en.xml" rel="self" type="application/rss+xml" />
     <!-- ITEMS -->
+    <item>
+      <guid isPermaLink="false">2026-02-02_18-00-00_last_month</guid>
+      <pubDate>Fri, 2 Dec 2026 18:00:00 EST</pubDate>
+      <title>Last Month in MonTransit</title>
+      <description>minor improvement to avoid static data🗃️ corruption⛓️‍💥 during minification🗜️, 232 schedule updates🔁…</description>
+      <link>https://mtransitapps.github.io/news/</link>
+    </item>
     <item>
       <guid isPermaLink="false">2025-12-02_18-00-00_last_month</guid>
       <pubDate>Tue, 2 Dec 2025 18:00:00 EST</pubDate>
@@ -119,56 +126,56 @@
       <guid isPermaLink="false">2024-09-02_18-00-00_last_month</guid>
       <pubDate>Mon, 2 Sep 2024 18:00:00 EDT</pubDate>
       <title>Last Month in MonTransit</title>
-      <description><![CDATA[reached 1M+ downloads⬇️ on Google Play Store!💚, better nearby🎯 connections🔀 in stop/station screen #UserRequest, improved real time🛰️ service alerts severityℹ️⚠️ and data updates reliability🦾, 252 service updates🔁…<BR /><BR /><IMG SRC="https://mtransitapps.github.io/news/data/2024-09-02_google_play_store_1M.png" WIDTH="70%" HEIGHT="70%" />]]></description>
+      <description><![CDATA[reached 1M+ downloads⬇️ on Google Play Store!💚, better nearby🎯 connections🔀 in stop/station screen #UserRequest, improved real time🛰️ service alerts severityℹ️⚠️ and data updates reliability🦾, 252 schedule updates🔁…<BR /><BR /><IMG SRC="https://mtransitapps.github.io/news/data/2024-09-02_google_play_store_1M.png" WIDTH="70%" HEIGHT="70%" />]]></description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
       <guid isPermaLink="false">2024-08-02_18-00-00_last_month</guid>
       <pubDate>Fri, 2 Aug 2024 18:00:00 EDT</pubDate>
       <title>Last Month in MonTransit</title>
-      <description>faster💨 &amp; more secure🔑 data updates (also ignore insignificant🤏 data changes), 283 service updates🔁</description>
+      <description>faster💨 &amp; more secure🔑 data updates (also ignore insignificant🤏 data changes), 283 schedule updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
       <guid isPermaLink="false">2024-07-02_18-00-00_last_month</guid>
       <pubDate>Tue, 2 Jul 2024 18:00:00 EDT</pubDate>
       <title>Last Month in MonTransit</title>
-      <description>added Canada VIA Rail trains🚆 https://bit.ly/MonTransitVIARailTrains, 267 service updates🔁…</description>
+      <description>added Canada VIA Rail trains🚆 https://bit.ly/MonTransitVIARailTrains, 267 schedule updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
       <guid isPermaLink="false">2024-06-02_18-00-00_last_month</guid>
       <pubDate>Sun, 2 Jun 2024 18:00:00 EDT</pubDate>
       <title>Last Month in MonTransit</title>
-      <description>getting ready for latest bike sharing data updates, modernizing code architecture, 263 service updates🔁…</description>
+      <description>getting ready for latest bike sharing data updates, modernizing code architecture, 263 schedule updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
       <guid isPermaLink="false">2024-05-02_18-00-00_last_month</guid>
       <pubDate>Thu, 2 May 2024 18:00:00 EDT</pubDate>
       <title>Last Month in MonTransit</title>
-      <description>bug fixes &amp; performance improvements, 236 service updates🔁…</description>
+      <description>bug fixes &amp; performance improvements, 236 schedule updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
       <guid isPermaLink="false">2024-04-02_18-00-00_last_month</guid>
       <pubDate>Tue, 2 Apr 2024 18:00:00 EDT</pubDate>
       <title>Last Month in MonTransit</title>
-      <description>bug fixes &amp; performance improvements, 206 service updates🔁…</description>
+      <description>bug fixes &amp; performance improvements, 206 schedule updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
       <guid isPermaLink="false">2024-03-02_18-00-00_last_month</guid>
       <pubDate>Sat, 2 Mar 2024 18:00:00 EDT</pubDate>
       <title>Last Month in MonTransit</title>
-      <description>dded transit agencies colors🟦🟥🟩 to Home screen top buttons✨ &amp; in-app ratings⭐ dialog🙏, started collecting performance💨 data📊, 286 service updates🔁…</description>
+      <description>dded transit agencies colors🟦🟥🟩 to Home screen top buttons✨ &amp; in-app ratings⭐ dialog🙏, started collecting performance💨 data📊, 286 schedule updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
       <guid isPermaLink="false">2024-02-02_18-00-00_last_month</guid>
       <pubDate>Fri, 2 Feb 2024 18:00:00 EDT</pubDate>
       <title>Last Month in MonTransit</title>
-      <description>improved route short name and ➡️direction as well as service alertsℹ️⚠️ UI✨, updated service alerts⚠️ for BC Transit buses🚍, said goodbye👋 to Android 5 Lollipop🍭 (2014) and Android 6 Marshmallow ⬜ (2015), 251 service updates🔁…</description>
+      <description>improved route short name and ➡️direction as well as service alertsℹ️⚠️ UI✨, updated service alerts⚠️ for BC Transit buses🚍, said goodbye👋 to Android 5 Lollipop🍭 (2014) and Android 6 Marshmallow ⬜ (2015), 251 schedule updates🔁…</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>

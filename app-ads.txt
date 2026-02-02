@@ -411,3 +411,5 @@ zetaglobal.net,815,RESELLER
 zetaglobal.net,998,RESELLER
 zmaticoo.com,5135224,RESELLER
 zoomd.com,88478941,RESELLER
+pangleglobal.com, 5024252, DIRECT
+pubmatic.com, 161490, RESELLER, d62403b186f2ace

@@ -33,7 +33,7 @@ smartadserver.com, 3117, RESELLER
 startapp.com, smt, RESELLER
 xad.com, 241, RESELLER, 81cbf0a75a5e0e9a
 algorix.co, 60532, RESELLER, 5b394c12fea27a1d
-contextweb.com , 562615, RESELLER, 89ff185a4c4e857c
+contextweb.com, 562615, RESELLER, 89ff185a4c4e857c
 gamaigroup.com, 423056, RESELLER
 improvedigital.com, 2451, RESELLER
 lijit.com, 516975, RESELLER, fafdf38b16bf6b2b
@@ -97,8 +97,6 @@ appnexus.com, 13293, RESELLER
 appnexus.com, 13297, RESELLER, f5ab79cb980f11d1
 appnexus.com, 13709, RESELLER, f5ab79cb980f11d1
 appnexus.com, 15426, RESELLER, f5ab79cb980f11d1
-appnexus.com, 1752, RESELLER, f5ab79cb980f11d1
-appnexus.com, 4052, RESELLER
 appnexus.com, 7351, RESELLER, f5ab79cb980f11d1
 appnexus.com, 7597, RESELLER, f5ab79cb980f11d1
 appnexus.com, 9316, RESELLER, f5ab79cb980f11d1
@@ -119,7 +117,6 @@ consumable.com, 2001409, RESELLER, aefcd3d2f45b5070
 consumable.com, 2001585, RESELLER, aefcd3d2f45b5070
 contextweb.com, 562546, RESELLER, 89ff185a4c4e857c
 contextweb.com, 562569, RESELLER, 89ff185a4c4e857c
-contextweb.com, 562615, RESELLER, 89ff185a4c4e857c
 contextweb.com, 562762, RESELLER, 89ff185a4c4e857c
 contextweb.com, 562791, RESELLER, 89ff185a4c4e857c
 contextweb.com, 562824, RESELLER, 89ff185a4c4e857c
@@ -201,7 +198,6 @@ openx.com, 539472296, RESELLER, 6a698e2ec38604c6
 openx.com, 540031703, RESELLER, 6a698e2ec38604c6
 openx.com, 540280728, RESELLER, 6a698e2ec38604c6
 openx.com, 540326226, RESELLER, 6a698e2ec38604c6
-openx.com, 540421297, RESELLER, 6a698e2ec38604c6
 openx.com, 540543195, RESELLER, 6a698e2ec38604c6
 openx.com, 540646187, RESELLER
 openx.com, 540679900, RESELLER, 6a698e2ec38604c6
@@ -213,11 +209,8 @@ opera.com, pub4366595624320, RESELLER, 55a0c5fd61378de3
 opera.com, pub4444433466368, RESELLER, 55a0c5fd61378de3
 opera.com, pub5925993551616, RESELLER, 55a0c5fd61378de3
 playdigo.com, 1986, RESELLER, 92011346d63d3c30
-pokkt.com, 5886, RESELLER, c45702d9311e25fd
 prado.co, 15127, RESELLER
 programmaticx.ai, 6888889, RESELLER
-pubmatic.com, 156177, RESELLER, 5d62403b186f2ace
-pubmatic.com, 156425, RESELLER, 5d62403b186f2ace
 pubmatic.com, 156517, RESELLER, 5d62403b186f2ace
 pubmatic.com, 156520, RESELLER, 5d62403b186f2ace
 pubmatic.com, 156631, RESELLER, 5d62403b186f2ace
@@ -357,7 +350,6 @@ unrulymedia.com, 689559416, RESELLER
 verve.com, 14619, RESELLER, 0c8f5958fc2d6270
 verve.com, 15503, RESELLER, 0c8f5958fc2d6270
 video.unrulymedia.com, 123476257, RESELLER
-video.unrulymedia.com, 169764768, RESELLER
 video.unrulymedia.com, 2613193077, RESELLER
 video.unrulymedia.com, 3704396951, RESELLER
 video.unrulymedia.com, 3855144660485329163, RESELLER

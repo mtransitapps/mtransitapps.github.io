@@ -2,11 +2,11 @@ name: Merge RSS Feed PR
 
 on:
   schedule:
-    # Run on the 2nd at 5:59 PM Eastern Time (America/Montreal), 1 min before RSS publish at 6 PM
-    # DST months (March-November): 5:59 PM EDT = 21:59 UTC
-    - cron: '59 21 2 3-11 *'  # March through November (EDT)
-    # Standard time months (December-February): 5:59 PM EST = 22:59 UTC
-    - cron: '59 22 2 1-2,12 *'  # January, February, December (EST)
+    # Run on the 2nd of each month at 5:59 PM EDT (America/Montreal during DST)
+    # 5:59 PM EDT = 21:59 UTC (EDT is UTC-4)
+    # Note: During EST (winter), this will run at 4:59 PM EST instead
+    # The RSS feed publishes at 6:00 PM local time (EDT/EST)
+    - cron: '59 21 2 * *'  # 21:59 UTC = 5:59 PM EDT
   workflow_dispatch:  # Allow manual triggering for testing
 
 permissions:
@@ -64,6 +64,6 @@ jobs:
 
           # Merge the PR
           echo "Merging PR #$pr_number..."
-          gh pr merge "$pr_number" --squash --auto --delete-branch
+          gh pr merge "$pr_number" --squash --delete-branch
 
           echo "✅ Successfully merged PR #$pr_number"

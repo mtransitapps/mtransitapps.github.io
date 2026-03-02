@@ -2,10 +2,10 @@ name: Merge RSS Feed PR
 
 on:
   schedule:
-    # Run at 21:55 UTC on the 2nd of each month
+    # Run at both 21:55 and 22:55 UTC on the 2nd of each month
     # During EDT (~Mar-Nov): 21:55 UTC = 5:55 PM EDT (hour 17) ✓
-    # During EST (~Nov-Mar): 21:55 UTC = 4:55 PM EST (hour 16) - will skip
-    - cron: '55 21 2 * *'  # 21:55 UTC on the 2nd of each month
+    # During EST (~Nov-Mar): 22:55 UTC = 5:55 PM EST (hour 17) ✓
+    - cron: '55 21,22 2 * *'  # 21:55 and 22:55 UTC on the 2nd of each month
   workflow_dispatch:  # Allow manual triggering for testing
 
 permissions:
@@ -25,7 +25,7 @@ jobs:
           echo "Current hour in America/Montreal: ${current_hour}"
           
           # Run when hour is 17 (5 PM local time)
-          # With 21:55 UTC: works during EDT, skips during EST
+          # Cron triggers at both 21:55 and 22:55 UTC, but only proceeds when hour is 17
           if [ "$current_hour" = "17" ]; then
             echo "✅ Correct time to run (hour 17 = 5 PM local time)"
             echo "should_run=true" >> $GITHUB_OUTPUT

@@ -2,11 +2,12 @@ name: Merge RSS Feed PR
 
 on:
   schedule:
-    # Run on the 2nd of each month at 5:59 PM EDT (America/Montreal during DST)
-    # 5:59 PM EDT = 21:59 UTC (EDT is UTC-4)
-    # Note: During EST (winter), this will run at 4:59 PM EST instead
-    # The RSS feed publishes at 6:00 PM local time (EDT/EST)
-    - cron: '59 21 2 * *'  # 21:59 UTC = 5:59 PM EDT
+    # Run on the 2nd of each month at 21:59 UTC to merge PR before RSS publish
+    # Time conversion to America/Montreal timezone:
+    # - During EDT (roughly March-November): 21:59 UTC = 5:59 PM EDT (1 min before 6 PM publish)
+    # - During EST (roughly November-March): 21:59 UTC = 4:59 PM EST (1 hour 1 min before 6 PM publish)
+    # This ensures the merge always happens before the 6 PM publication time
+    - cron: '59 21 2 * *'  # 21:59 UTC on the 2nd of each month
   workflow_dispatch:  # Allow manual triggering for testing
 
 permissions:
@@ -58,7 +59,8 @@ jobs:
           # Check if PR is mergeable
           if [ "$mergeable" != "MERGEABLE" ]; then
             echo "⚠️ PR #$pr_number is not mergeable (status: $mergeable)"
-            echo "Please check for conflicts or other issues"
+            echo "Action required: Check GitHub Actions logs and manually merge the PR"
+            echo "PR URL: https://github.com/${{ github.repository }}/pull/$pr_number"
             exit 1
           fi
 

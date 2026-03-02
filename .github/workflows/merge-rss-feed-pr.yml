@@ -3,7 +3,7 @@ name: Merge RSS Feed PR
 on:
   schedule:
     # Run on the 2nd of each month at 21:59 UTC to merge PR before RSS publish
-    # Time conversion to America/Montreal timezone:
+    # Time conversion to Eastern Time (America/Montreal observes Eastern Time):
     # - During EDT (roughly March-November): 21:59 UTC = 5:59 PM EDT (1 min before 6 PM publish)
     # - During EST (roughly November-March): 21:59 UTC = 4:59 PM EST (1 hour 1 min before 6 PM publish)
     # This ensures the merge always happens before the 6 PM publication time
@@ -38,7 +38,8 @@ jobs:
           pr_number=$(echo "$prs" | jq -r '.[] | select(.headRefName | contains("lastmonth")) | .number' | head -1)
 
           if [ -z "$pr_number" ]; then
-            echo "No open PR found with 'lastmonth' in branch name"
+            echo "⚠️ No open PR found with 'lastmonth' in branch name"
+            echo "Note: This is expected if the PR was already merged or hasn't been created yet"
             exit 0
           fi
 

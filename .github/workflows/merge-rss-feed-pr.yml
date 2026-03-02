@@ -2,11 +2,10 @@ name: Merge RSS Feed PR
 
 on:
   schedule:
-    # Run at both possible times, then check which timezone is currently active
-    # 21:59 UTC aligns with 5:59 PM when EDT is in effect (EDT = UTC-4)
-    - cron: '59 21 2 * *'  # 21:59 UTC on the 2nd of each month
-    # 22:59 UTC aligns with 5:59 PM when EST is in effect (EST = UTC-5)
-    - cron: '59 22 2 * *'  # 22:59 UTC on the 2nd of each month
+    # Run at 21:55 UTC on the 2nd of each month
+    # During EDT (Mar-Nov): 21:55 UTC = 5:55 PM EDT (hour 17) ✓
+    # During EST (Nov-Mar): 21:55 UTC = 4:55 PM EST (hour 16) - will skip
+    - cron: '55 21 2 * *'  # 21:55 UTC on the 2nd of each month
   workflow_dispatch:  # Allow manual triggering for testing
 
 permissions:
@@ -20,22 +19,18 @@ jobs:
       - name: Check if current time matches timezone
         id: check_timezone
         run: |
-          # Get current time in America/Montreal timezone
+          # Get current hour in America/Montreal timezone
           current_hour=$(TZ='America/Montreal' date +%H)
-          current_minute=$(TZ='America/Montreal' date +%M)
           
-          echo "Current time in America/Montreal: ${current_hour}:${current_minute}"
+          echo "Current hour in America/Montreal: ${current_hour}"
           
-          # We want to run around 17:59 (5:59 PM) local time
-          # Allow a range to account for GitHub Actions scheduling delays (typically a few minutes)
-          if [ "$current_hour" = "17" ] && [ "$current_minute" -ge 58 ]; then
-            echo "✅ Correct time to run (approximately 5:59 PM local time)"
-            echo "should_run=true" >> $GITHUB_OUTPUT
-          elif [ "$current_hour" = "18" ] && [ "$current_minute" -le 2 ]; then
-            echo "✅ Correct time to run (approximately 5:59 PM local time, with delay)"
+          # Run when hour is 17 (5 PM local time)
+          # With 21:55 UTC: works during EDT, skips during EST
+          if [ "$current_hour" = "17" ]; then
+            echo "✅ Correct time to run (hour 17 = 5 PM local time)"
             echo "should_run=true" >> $GITHUB_OUTPUT
           else
-            echo "⏭️ Skipping - not the correct local time (expected ~17:59, got ${current_hour}:${current_minute})"
+            echo "⏭️ Skipping - hour is ${current_hour} (not 5 PM local time)"
             echo "should_run=false" >> $GITHUB_OUTPUT
           fi
 

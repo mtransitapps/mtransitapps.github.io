@@ -2,10 +2,10 @@ name: Merge RSS Feed PR
 
 on:
   schedule:
-    # Run at both 21:55 and 22:55 UTC on the 2nd of each month
-    # During EDT (~Mar-Nov): 21:55 UTC = 5:55 PM EDT (hour 17) ✓
-    # During EST (~Nov-Mar): 22:55 UTC = 5:55 PM EST (hour 17) ✓
-    - cron: '55 21,22 2 * *'  # 21:55 and 22:55 UTC on the 2nd of each month
+    # Run at both 21:50 and 22:50 UTC on the 2nd of each month
+    # During EDT (~Mar-Nov): 21:50 UTC = 5:50 PM EDT (hour 17) ✓
+    # During EST (~Nov-Mar): 22:50 UTC = 5:50 PM EST (hour 17) ✓
+    - cron: '50 21,22 2 * *'  # 21:50 and 22:50 UTC on the 2nd of each month
   workflow_dispatch:  # Allow manual triggering for testing
 
 permissions:

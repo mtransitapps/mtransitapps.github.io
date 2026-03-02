@@ -2,12 +2,11 @@ name: Merge RSS Feed PR
 
 on:
   schedule:
-    # Run on the 2nd of each month at 21:59 UTC to merge PR before RSS publish
-    # Time conversion to Eastern Time (America/Montreal observes Eastern Time):
-    # - During EDT (roughly March-November): 21:59 UTC = 5:59 PM EDT (1 min before 6 PM publish)
-    # - During EST (roughly November-March): 21:59 UTC = 4:59 PM EST (1 hour 1 min before 6 PM publish)
-    # This ensures the merge always happens before the 6 PM publication time
-    - cron: '59 21 2 * *'  # 21:59 UTC on the 2nd of each month
+    # Run at both possible times, then check which timezone is currently active
+    # EDT (Daylight Saving Time): 21:59 UTC = 5:59 PM EDT (1 min before 6 PM publish)
+    - cron: '59 21 2 * *'  # 21:59 UTC on the 2nd of each month (for EDT)
+    # EST (Standard Time): 22:59 UTC = 5:59 PM EST (1 min before 6 PM publish)
+    - cron: '59 22 2 * *'  # 22:59 UTC on the 2nd of each month (for EST)
   workflow_dispatch:  # Allow manual triggering for testing
 
 permissions:
@@ -18,12 +17,32 @@ jobs:
   merge-rss-pr:
     runs-on: ubuntu-latest
     steps:
+      - name: Check if current time matches timezone
+        id: check_timezone
+        run: |
+          # Get current time in America/Montreal timezone
+          current_hour=$(TZ='America/Montreal' date +%H)
+          current_minute=$(TZ='America/Montreal' date +%M)
+          
+          echo "Current time in America/Montreal: ${current_hour}:${current_minute}"
+          
+          # We want to run at 17:59 (5:59 PM) local time
+          if [ "$current_hour" = "17" ] && [ "$current_minute" = "59" ]; then
+            echo "✅ Correct time to run (5:59 PM local time)"
+            echo "should_run=true" >> $GITHUB_OUTPUT
+          else
+            echo "⏭️ Skipping - not the correct local time (expected 17:59, got ${current_hour}:${current_minute})"
+            echo "should_run=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Checkout repository
+        if: steps.check_timezone.outputs.should_run == 'true'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Find and merge PR with lastmonth branch
+        if: steps.check_timezone.outputs.should_run == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

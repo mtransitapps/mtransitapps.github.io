@@ -1,0 +1,85 @@
+name: Merge RSS Feed PR
+
+on:
+  schedule:
+    - cron: '00 21,22 2 * *' # 6 PM EDT/EST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge-rss-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if current time matches timezone
+        id: check_timezone
+        run: |
+          # Get current hour in America/Montreal timezone
+          current_hour=$(TZ='America/Montreal' date +%H)
+          
+          echo "Current hour in America/Montreal: ${current_hour}"
+          
+          if [ "$current_hour" = "18" ]; then
+            echo "✅ Correct time to run (hour 18 = 6 PM local time)"
+            echo "should_run=true" >> $GITHUB_OUTPUT
+          else
+            echo "⏭️ Skipping - hour is ${current_hour} (not 6 PM local time)"
+            echo "should_run=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout repository
+        if: steps.check_timezone.outputs.should_run == 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find and merge PR with lastmonth branch
+        if: steps.check_timezone.outputs.should_run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Find open PRs with branch name containing "lastmonth"
+          echo "Searching for open PRs with 'lastmonth' in branch name..."
+
+          # Get list of open PRs
+          prs=$(gh pr list --state open --json number,headRefName,title)
+          echo "Open PRs: $prs"
+
+          # Filter PRs with "lastmonth" in branch name
+          pr_number=$(echo "$prs" | jq -r '.[] | select(.headRefName | contains("lastmonth")) | .number' | head -1)
+
+          if [ -z "$pr_number" ]; then
+            echo "⚠️ No open PR found with 'lastmonth' in branch name"
+            echo "Note: This is expected if the PR was already merged or hasn't been created yet"
+            exit 0
+          fi
+
+          echo "Found PR #$pr_number with lastmonth branch"
+
+          # Get PR details
+          pr_info=$(gh pr view "$pr_number" --json headRefName,title,mergeable)
+          echo "PR Info: $pr_info"
+
+          branch_name=$(echo "$pr_info" | jq -r '.headRefName')
+          pr_title=$(echo "$pr_info" | jq -r '.title')
+          mergeable=$(echo "$pr_info" | jq -r '.mergeable')
+
+          echo "Branch: $branch_name"
+          echo "Title: $pr_title"
+          echo "Mergeable: $mergeable"
+
+          # Check if PR is mergeable
+          if [ "$mergeable" != "MERGEABLE" ]; then
+            echo "⚠️ PR #$pr_number is not mergeable (status: $mergeable)"
+            echo "Action required: Check GitHub Actions logs and manually merge the PR"
+            echo "PR URL: https://github.com/${{ github.repository }}/pull/$pr_number"
+            exit 1
+          fi
+
+          # Merge the PR
+          echo "Merging PR #$pr_number..."
+          gh pr merge "$pr_number" --squash --delete-branch
+
+          echo "✅ Successfully merged PR #$pr_number"

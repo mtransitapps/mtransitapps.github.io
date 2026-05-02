@@ -5,20 +5,20 @@
     <description>Dernières nouvelles sur l'application MonTransit</description>
     <link>https://mtransitapps.github.io/news/</link>
     <language>fr-fr</language>
-    <pubDate>Sat, 2 May 2026 18:00:00 EST</pubDate>
-    <lastBuildDate>Sat, 2 May 2026 18:00:00 EST</lastBuildDate>
+    <pubDate>Sat, 2 May 2026 18:00:00 EDT</pubDate>
+    <lastBuildDate>Sat, 2 May 2026 18:00:00 EDT</lastBuildDate>
     <atom:link href="https://mtransitapps.github.io/news/rss-fr.xml" rel="self" type="application/rss+xml" />
     <!-- ITEMS -->
     <item>
       <guid isPermaLink="false">2026-05-02_18-00-00_last_month</guid>
-      <pubDate>Sat, 2 May 2026 18:00:00 EST</pubDate>
+      <pubDate>Sat, 2 May 2026 18:00:00 EDT</pubDate>
       <title>Le mois dernier dans MonTransit</title>
       <description>plusieurs corrections de petits bugs🐛 et améliorations des performances🚅🗜️, 402 mises à jour🔁 des horaires …</description>
       <link>https://mtransitapps.github.io/news/</link>
     </item>
     <item>
       <guid isPermaLink="false">2026-04-02_18-00-00_last_month</guid>
-      <pubDate>Thu, 2 Apr 2026 18:00:00 EST</pubDate>
+      <pubDate>Thu, 2 Apr 2026 18:00:00 EDT</pubDate>
       <title>Le mois dernier dans MonTransit</title>
       <description>🆕compatibilité avec les mises à jour de trajet🎉 en temps-réel🛰️ de nombreuses agences de transport, affichage des trajets🚏 et arrêts annulés❌, 210 mises à jour🔁 des horaires …</description>
       <link>https://mtransitapps.github.io/news/</link>

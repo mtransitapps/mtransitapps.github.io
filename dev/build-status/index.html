@@ -409,16 +409,16 @@
 							if (project == "mtransit-for-android") {
 								addGHBadge("MT build", "mt-build.yml");
 								// if (branch == "mmathieum") {
-								// 	addBadge("MT dependency update", "mt-dependency-update.yml");
+								// 	addGHBadge("MT dependency update", "mt-dependency-update.yml");
 								// }
 							}
 							if (project != "mtransit-for-android") {
-								addBadge("MT sync code & data", "mt-sync-code-data.yml");
+								addGHBadge("MT sync code & data", "mt-sync-code-data.yml");
 							}
 							if (project != "mtransit-for-android" && !project.endsWith("-bike")) {
-								addBadge("MT download data", "mt-download-data.yml");
+								addGHBadge("MT download data", "mt-download-data.yml");
 							}
-							addBadge("MT release", "mt-release.yml");
+							addGHBadge("MT release", "mt-release.yml");
 						}
 						if (ciProviders.includes("gitlab")) {
 							var cellGitLab = row.insertCell(c++);

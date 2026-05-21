@@ -401,8 +401,9 @@
 							const addGHBadge = (workflowName, workflowFileName) => {
 								const encodedBranch = encodeURIComponent(branch);
 								const encodedWorkflowName = encodeURIComponent(workflowName);
+								const htmlWorkflowName = workflowName.replace(/&/g, '&amp;');
 								cellGitHubAction.innerHTML += "<a href=\"https://github.com/mtransitapps/" + projectUrl + "/actions?query=branch:" + encodedBranch + "+workflow:%22" + encodedWorkflowName + "%22\" rel=\"nofollow\">"
-									+ "<img alt=\"GH:" + workflowName + "\" src=\"https://github.com/mtransitapps/" + projectUrl + "/actions/workflows/" + workflowFileName + "/badge.svg?branch=" + encodedBranch + "\">"
+									+ "<img alt=\"GH:" + htmlWorkflowName + "\" src=\"https://github.com/mtransitapps/" + projectUrl + "/actions/workflows/" + workflowFileName + "/badge.svg?branch=" + encodedBranch + "\">"
 									+ "</a>";
 							};
 							var cellGitHubAction = row.insertCell(c++);

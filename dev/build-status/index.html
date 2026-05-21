@@ -398,52 +398,27 @@
 								+ "</a>";
 						}
 						if (ciProviders.includes("github")) {
-							var cellGitHubAction = row.insertCell(c++);
-							var workflowName="";
-							var workflowFileName="";
-							if (project == "mtransit-for-android") {
-								workflowName="MT build";
-								workflowFileName="mt-build.yml";
-								cellGitHubAction.innerHTML =
-									"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
-										+ "<img alt=\"GH:"+workflowName+"\""
-											+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
+							const addGHBadge = (workflowName, workflowFileName) => {
+								const encodedBranch = encodeURIComponent(branch);
+								const encodedWorkflowName = encodeURIComponent(workflowName);
+								cellGitHubAction.innerHTML += "<a href=\"https://github.com/mtransitapps/" + projectUrl + "/actions?query=branch:" + encodedBranch + "+workflow:%22" + encodedWorkflowName + "%22\" rel=\"nofollow\">"
+									+ "<img alt=\"GH:" + workflowName + "\" src=\"https://github.com/mtransitapps/" + projectUrl + "/actions/workflows/" + workflowFileName + "/badge.svg?branch=" + encodedBranch + "\">"
 									+ "</a>";
+							};
+							var cellGitHubAction = row.insertCell(c++);
+							if (project == "mtransit-for-android") {
+								addGHBadge("MT build", "mt-build.yml");
 								// if (branch == "mmathieum") {
-								// 	var workflowName="MT dependency update";
-								// 	cellGitHubAction.innerHTML += "&nbsp;";
-								// 	cellGitHubAction.innerHTML +=
-								// 		"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
-								// 			+ "<img alt=\"GH:"+workflowName+"\""
-								// 				+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/mt-dependency-update.yml/badge.svg?branch="+branch+"\">"
-								// 		+ "</a>";
+								// 	addBadge("MT dependency update", "mt-dependency-update.yml");
 								// }
 							}
 							if (project != "mtransit-for-android") {
-								workflowName="MT sync code & data";
-								workflowFileName="mt-sync-code-data.yml";
-								cellGitHubAction.innerHTML +=
-									"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
-										+ "<img alt=\"GH:"+workflowName+"\""
-											+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
-									+ "</a>";
+								addBadge("MT sync code & data", "mt-sync-code-data.yml");
 							}
 							if (project != "mtransit-for-android" && !project.endsWith("-bike")) {
-								workflowName="MT download data";
-								workflowFileName="mt-download-data.yml";
-								cellGitHubAction.innerHTML +=
-									"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
-										+ "<img alt=\"GH:"+workflowName+"\""
-											+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
-									+ "</a>";
+								addBadge("MT download data", "mt-download-data.yml");
 							}
-							workflowName="MT release";
-							workflowFileName="mt-release.yml";
-							cellGitHubAction.innerHTML +=
-								"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
-									+ "<img alt=\"GH:"+workflowName+"\""
-										+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
-								+ "</a>";
+							addBadge("MT release", "mt-release.yml");
 						}
 						if (ciProviders.includes("gitlab")) {
 							var cellGitLab = row.insertCell(c++);

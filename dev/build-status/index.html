@@ -405,7 +405,7 @@
 								workflowName="MT build";
 								workflowFileName="mt-build.yml";
 								cellGitHubAction.innerHTML =
-									"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+									"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
 										+ "<img alt=\"GH:"+workflowName+"\""
 											+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
 									+ "</a>";
@@ -413,7 +413,7 @@
 								// 	var workflowName="MT dependency update";
 								// 	cellGitHubAction.innerHTML += "&nbsp;";
 								// 	cellGitHubAction.innerHTML +=
-								// 		"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+								// 		"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
 								// 			+ "<img alt=\"GH:"+workflowName+"\""
 								// 				+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/mt-dependency-update.yml/badge.svg?branch="+branch+"\">"
 								// 		+ "</a>";
@@ -423,7 +423,7 @@
 								workflowName="MT sync code & data";
 								workflowFileName="mt-sync-code-data.yml";
 								cellGitHubAction.innerHTML +=
-									"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+									"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
 										+ "<img alt=\"GH:"+workflowName+"\""
 											+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
 									+ "</a>";
@@ -432,7 +432,7 @@
 								workflowName="MT download data";
 								workflowFileName="mt-download-data.yml";
 								cellGitHubAction.innerHTML +=
-									"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+									"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
 										+ "<img alt=\"GH:"+workflowName+"\""
 											+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
 									+ "</a>";
@@ -440,7 +440,7 @@
 							workflowName="MT release";
 							workflowFileName="mt-release.yml";
 							cellGitHubAction.innerHTML +=
-								"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:"+workflowName+"\" rel=\"nofollow\">"
+								"<a href=\"https://github.com/mtransitapps/"+projectUrl+"/actions?query=branch:"+branch+"+workflow:%22"+encodeURIComponent(workflowName)+"%22\" rel=\"nofollow\">"
 									+ "<img alt=\"GH:"+workflowName+"\""
 										+ "src=\"https://github.com/mtransitapps/"+projectUrl+"/actions/workflows/"+workflowFileName+"/badge.svg?branch="+branch+"\">"
 								+ "</a>";

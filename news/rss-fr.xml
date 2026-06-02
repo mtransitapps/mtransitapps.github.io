@@ -5,13 +5,13 @@
     <description>Dernières nouvelles sur l'application MonTransit</description>
     <link>https://mtransitapps.github.io/news/</link>
     <language>fr-fr</language>
-    <pubDate>Tue, 2 Jun 2025 18:00:00 EDT</pubDate>
-    <lastBuildDate>Tue, 2 Jun 2025 18:00:00 EDT</lastBuildDate>
+    <pubDate>Tue, 2 Jun 2026 18:00:00 EDT</pubDate>
+    <lastBuildDate>Tue, 2 Jun 2026 18:00:00 EDT</lastBuildDate>
     <atom:link href="https://mtransitapps.github.io/news/rss-fr.xml" rel="self" type="application/rss+xml" />
     <!-- ITEMS -->
     <item>
       <guid isPermaLink="false">2026-06-02_18-00-00_last_month</guid>
-      <pubDate>Tue, 2 Jun 2025 18:00:00 EDT</pubDate>
+      <pubDate>Tue, 2 Jun 2026 18:00:00 EDT</pubDate>
       <title>Le mois dernier dans MonTransit</title>
       <description>ajout🆕 de tous les systèmes de transport manquant de BC Transit, support de l’affichage du numéro et du logo d’une ligne, ajout des icônes🚲🚍🚇🚆🚈⛴️ dans plusieurs écrans, corrections de bug🪲, 280 mises à jour🔁 des horaires …</description>
       <link>https://mtransitapps.github.io/news/</link>

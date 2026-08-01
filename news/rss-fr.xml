@@ -5,10 +5,16 @@
     <description>Dernières nouvelles sur l'application MonTransit</description>
     <link>https://mtransitapps.github.io/news/</link>
     <language>fr-fr</language>
-    <pubDate>Thu, 2 Jul 2026 18:00:00 EDT</pubDate>
-    <lastBuildDate>Thu, 2 Jul 2026 18:00:00 EDT</lastBuildDate>
+    <pubDate>Sun, 2 Aug 2026 18:00:00 EDT</pubDate>
+    <lastBuildDate>Thu, 2 Aug 2026 18:00:00 EDT</lastBuildDate>
     <atom:link href="https://mtransitapps.github.io/news/rss-fr.xml" rel="self" type="application/rss+xml" />
     <!-- ITEMS -->
+    <item>
+      <guid isPermaLink="false">2026-08-02_18-00-00_last_month</guid>
+      <pubDate>Sun, 2 Aug 2026 18:00:00 EDT</pubDate>
+      <title>Le mois dernier dans MonTransit</title>
+      <description>ajout🆕 de 10 agences de transport en Ontario🟥🍁, mise en évidence✨ des interruptions … de service dans les 🕓 prochains départs détaillés, meilleur compatibilité avec Android 16🍦, 283 mises à jour🔁 des horaires …</description>
+      <link>https://mtransitapps.github.io/news/</link>
     <item>
       <guid isPermaLink="false">2026-07-02_18-00-00_last_month</guid>
       <pubDate>Thu, 2 Jul 2026 18:00:00 EDT</pubDate>

@@ -21,12 +21,14 @@
 		
 			function init() {
 				var mapOptions = {
-					zoom: 11,
-					center: new google.maps.LatLng(45.5, -73.566667), // Montreal
+					zoom: 7,
+					center: new google.maps.LatLng(45.5230433, -73.5814131), // Montreal office
+					mapTypeId: 'satellite',
 					disableDefaultUI: true,
+					// colorScheme: ColorScheme.DARK,
 					styles: [
 						{featureType:"all",elementType:"all",stylers:[{visibility:"off"}]},
-						{featureType:'road',elementType:'geometry',stylers:[{visibility:"simplified"},{color:'#FF00FF'}]},
+						{featureType:'road',elementType:'geometry',stylers:[{visibility:"simplified"},{color:'#757575'}]},
 						{featureType:'water',elementType:'all',stylers:[{visibility:"simplified"},{color:'#58454F'}]},
 						{featureType:'landscape',elementType:'all',stylers:[{visibility:"simplified"},{color:'#230913'}]},
 					]

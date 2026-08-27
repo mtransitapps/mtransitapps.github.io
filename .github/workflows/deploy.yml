@@ -32,10 +32,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # TODO: Inject the API Key secret into the source file
-      # - name: Inject API Key
-      #   run: |
-      #     sed -i 's/REPLACE_WITH_MY_API_KEY/${{ secrets.MY_API_KEY }}/g' main.js
+      # Inject the API Key secret into the source file
+      - name: Inject API Key
+        run: |
+          sed -i 's/MT_REPLACE_WITH_MAPS_JS_API_KEY/${{ secrets.MT_MAPS_JS_API_KEY }}/g' ./index.html
+          sed -i 's/MT_REPLACE_WITH_MAPS_JS_API_KEY/${{ secrets.MT_MAPS_JS_API_KEY }}/g' ./dev/map/empty.html
 
 
       - name: Setup Pages

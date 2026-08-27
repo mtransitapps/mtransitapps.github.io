@@ -82,9 +82,9 @@
 	</style>
 
 	<!-- This APK key is restricted to 'Maps JavaScript API' on 'mtransitapps.github.io' website: -->
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrAHs1Dp4dgQxA0-17PJqaCfK_Jpg85Hs"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrAHs1Dp4dgQxA0-17PJqaCfK_Jpg85Hs&libraries=maps,marker"></script>
 	<!-- Use demo key for local testing: https://developers.google.com/maps/documentation/javascript/demo-key -->
-	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=INSERT_DEMO_KEY_HERE"></script> -->
+	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=INSERT_DEMO_KEY_HERE&libraries=maps,marker"></script> -->
 
 	<script type="text/javascript">
 		var DEFAULT_LAT = 45.5230433;  // Montreal office
@@ -109,11 +109,28 @@
 			var mapElement = document.getElementById('map');
 			var map = new google.maps.Map(mapElement, mapOptions);
 			loadMarkers(map);
-			centerMapOnUserLocation(map);
+			centerMapOnDeviceLocation(map);
 		}
 
-		function centerMapOnUserLocation(map) {
-			fetch('https://ipwho.is/', { cache: 'no-store' })
+		function centerMapOnDeviceLocation(map) {
+			if (navigator.geolocation) {
+				centerMapOnDeviceLocationNavigator(map)
+					.catch(function () {
+						return centerMapOnDeviceLocationIpwhois(map);
+					})
+					.catch(function () {
+						setDefaultMapCenter(map);
+					});
+				return;
+			}
+			centerMapOnDeviceLocationIpwhois(map)
+				.catch(function () {
+					setDefaultMapCenter(map);
+				});
+		}
+
+		function centerMapOnDeviceLocationIpwhois(map) {
+			return fetch('https://ipwho.is/', { cache: 'no-store' })
 				.then(function (response) {
 					if (!response.ok) {
 						throw new Error('ipwho.is lookup failed: ' + response.status);
@@ -130,11 +147,43 @@
 						throw new Error('ipwho.is returned invalid coordinates');
 					}
 					map.setCenter(new google.maps.LatLng(lat, lng));
+					return true;
 				})
 				.catch(function (error) {
-					console.warn('Using default map center (Montreal office):', error);
-					map.setCenter(new google.maps.LatLng(DEFAULT_LAT, DEFAULT_LNG));
+					console.warn('ipwho.is geolocation failed:', error);
+					throw error;
 				});
+		}
+
+		function centerMapOnDeviceLocationNavigator(map) {
+			return new Promise(function (resolve, reject) {
+				if (!navigator.geolocation) {
+					reject(new Error('navigator.geolocation is unavailable'));
+					return;
+				}
+				navigator.geolocation.getCurrentPosition(
+					function (position) {
+						var lat = Number(position.coords && position.coords.latitude);
+						var lng = Number(position.coords && position.coords.longitude);
+						if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+							reject(new Error('navigator geolocation returned invalid coordinates'));
+							return;
+						}
+						map.setCenter(new google.maps.LatLng(lat, lng));
+						resolve(true);
+					},
+					function (error) {
+						console.warn('Navigator geolocation failed:', error);
+						reject(error);
+					},
+					{ enableHighAccuracy: false, timeout: 5000, maximumAge: 3600000 }
+				);
+			});
+		}
+
+		function setDefaultMapCenter(map) {
+			console.warn('Using default map center (Montreal office).');
+			map.setCenter(new google.maps.LatLng(DEFAULT_LAT, DEFAULT_LNG));
 		}
 
 		function loadMarkers(map) {

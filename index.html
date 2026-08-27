@@ -19,13 +19,11 @@
 
 		.logo {
 			position: absolute;
-			margin: auto;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			width: 128px;
-			height: 128px;
+			top: 16px;
+			left: 16px;
+			width: 32px;
+			height: 32px;
+			z-index: 2;
 		}
 
 		.store-link {
@@ -41,7 +39,7 @@
 			display: block;
 			width: 100%;
 			height: auto;
-			max-width: 256px;
+			max-width: 128px;
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -72,12 +70,15 @@
 	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=INSERT_DEMO_KEY_HERE"></script> -->
 
 	<script type="text/javascript">
+		var DEFAULT_LAT = 45.5230433;  // Montreal office
+		var DEFAULT_LNG = -73.5814131;  // Montreal office
+
 		google.maps.event.addDomListener(window, 'load', init);
 
 		function init() {
 			var mapOptions = {
-				zoom: 17,
-				center: new google.maps.LatLng(45.5230433, -73.5814131), // Montreal office
+				zoom: 10,
+				center: new google.maps.LatLng(DEFAULT_LAT, DEFAULT_LNG),
 				mapTypeId: 'roadmap',
 				disableDefaultUI: true,
 				// colorScheme: ColorScheme.DARK,
@@ -90,6 +91,137 @@
 			};
 			var mapElement = document.getElementById('map');
 			var map = new google.maps.Map(mapElement, mapOptions);
+			loadMarkers(map);
+			centerMapOnUserLocation(map);
+		}
+
+		function centerMapOnUserLocation(map) {
+			fetch('https://ipwho.is/', { cache: 'no-store' })
+				.then(function (response) {
+					if (!response.ok) {
+						throw new Error('ipwho.is lookup failed: ' + response.status);
+					}
+					return response.json();
+				})
+				.then(function (result) {
+					if (!result || result.success !== true) {
+						throw new Error('ipwho.is returned unsuccessful response');
+					}
+					var lat = Number(result.latitude);
+					var lng = Number(result.longitude);
+					if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+						throw new Error('ipwho.is returned invalid coordinates');
+					}
+					map.setCenter(new google.maps.LatLng(lat, lng));
+				})
+				.catch(function (error) {
+					console.warn('Using default map center (Montreal office):', error);
+					map.setCenter(new google.maps.LatLng(DEFAULT_LAT, DEFAULT_LNG));
+				});
+		}
+
+		function loadMarkers(map) {
+			var infoWindow = new google.maps.InfoWindow();
+
+			fetch('data/modules.json', { cache: 'no-store' })
+				.then(function (response) {
+					if (!response.ok) {
+						throw new Error('Failed to load modules.json: ' + response.status);
+					}
+					return response.json();
+				})
+				.then(function (modules) {
+					modules.forEach(function (module) {
+						if (module.store !== 'production') {
+							return;
+						}
+
+						var lat = parseFloat(module.lat);
+						var lng = parseFloat(module.lng);
+						if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+							return;
+						}
+
+						var position = new google.maps.LatLng(lat, lng);
+						var color = normalizeHexColor(module.color);
+						var marker = new google.maps.Marker({
+							position: position,
+							map: map,
+							title: module.name || module.pkg || 'MonTransit',
+							icon: {
+								path: google.maps.SymbolPath.CIRCLE,
+								fillColor: color,
+								fillOpacity: 1,
+								strokeColor: '#FFFFFF',
+								strokeWeight: 1,
+								scale: 7
+							}
+						});
+
+						marker.addListener('click', function () {
+							infoWindow.setContent(buildInfoWindowContent(module));
+							infoWindow.open(map, marker);
+						});
+					});
+				})
+				.catch(function (error) {
+					console.error('Could not render map markers from modules.json', error);
+				});
+		}
+
+		function buildInfoWindowContent(module) {
+			var title = escapeHtml(module.name || module.pkg || 'MonTransit');
+			var location = escapeHtml(module.location || '');
+			var pkg = (module.pkg || '').toString().trim();
+			var repo = (module.repo || '').toString().trim();
+			var iconUrl = '';
+			if (repo) {
+				iconUrl = 'https://raw.githubusercontent.com/mtransitapps/'
+					+ encodeURIComponent(repo)
+					+ '/master/app-android/src/main/play/listings/en-US/graphics/icon/1.png';
+			}
+			var iconHtml = iconUrl
+				? '<img src="' + iconUrl + '" alt="' + title + ' icon" style="width:48px;height:48px;display:block;margin:0 auto 8px auto;border-radius:8px;">'
+				: '';
+			if (!pkg) {
+				return ''
+					+ '<div style="font-family:Arial,sans-serif;max-width:260px;text-align:center;">'
+					+ iconHtml
+					+ '<strong style="display:block;">' + title + '</strong>'
+					+ (location ? '<span style="display:block;margin-top:4px;margin-bottom:8px;font-size:12px;color:#5f6368;">' + location + '</span>' : '')
+					+ '</div>';
+			}
+			var playStoreUrl = 'https://play.google.com/store/apps/details?id=' + encodeURIComponent(pkg);
+			return ''
+				+ '<div style="font-family:Arial,sans-serif;max-width:260px;text-align:center;">'
+				+ iconHtml
+				+ '<strong style="display:block;">' + title + '</strong>'
+				+ (location ? '<span style="display:block;margin-top:4px;margin-bottom:8px;font-size:12px;color:#5f6368;">' + location + '</span>' : '')
+				+ '<a href="' + playStoreUrl + '" target="_blank" rel="noopener noreferrer" aria-label="Open on Google Play" style="display:inline-block;">'
+				+ '<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"'
+				+ ' alt="Get it on Google Play" style="width:180px;height:auto;display:block;margin:0 auto;">'
+				+ '</a>'
+				+ '</div>';
+		}
+
+		function escapeHtml(value) {
+			return (value || '').toString()
+				.replace(/&/g, '&amp;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#39;');
+		}
+
+		function normalizeHexColor(color) {
+			var value = (color || '').toString().trim();
+			if (!value) {
+				return '#1E88E5';
+			}
+			if (value.charAt(0) !== '#') {
+				value = '#' + value;
+			}
+			return /^#[0-9A-Fa-f]{6}$/.test(value) ? value : '#1E88E5';
 		}
 	</script>
 </head>
@@ -97,7 +229,7 @@
 <body>
 	<div id="map"></div>
 	<a class="github-link" href="https://github.com/mtransitapps" target="_blank" rel="noopener noreferrer" aria-label="MonTransit on GitHub">
-		<img class="github-logo" src="img/gitHub_invertocat_white_clearspace.png" alt="GitHub" />
+		<img class="github-logo" src="img/gitHub_invertocat_white.png" alt="GitHub" />
 	</a>
 	<img class="logo" src="hi-res-app-icon.png" alt="MonTransit" />
 	<!-- <div class="footer-container"> -->

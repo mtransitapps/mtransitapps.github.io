@@ -597,7 +597,7 @@
     "pkg": "org.mtransit.android.ca_lethbridge_transit_bus",
     "store": "production",
     "name": "Lethbridge Transit",
-    "location": "lethbridge, AB, Canada",
+    "location": "Lethbridge, AB, Canada",
     "type_id": "3",
     "color": "009ADE",
     "lat": "49.703997",

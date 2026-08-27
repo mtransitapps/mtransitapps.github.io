@@ -5,6 +5,9 @@
 	<title>MonTransit</title>
 	<link rel="manifest" href="manifest.json">
 	<meta name="application-name" content="MonTransit">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<!-- <link rel="icon" sizes="16x16 32x32 48x48" href="lo_def.ico">-->
 	<link rel="icon" sizes="512x512" href="hi-res-app-icon.png">
 	<!-- https://raw.githubusercontent.com/mtransitapps/mtransit-for-android/master/pub/hi-res-app-icon.png -->
@@ -185,7 +188,7 @@
 				: '';
 			if (!pkg) {
 				return ''
-					+ '<div style="font-family:Arial,sans-serif;max-width:260px;text-align:center;">'
+					+ '<div style="font-family:Roboto,Arial,sans-serif;max-width:260px;text-align:center;">'
 					+ iconHtml
 					+ '<strong style="display:block;">' + title + '</strong>'
 					+ (location ? '<span style="display:block;margin-top:4px;margin-bottom:8px;font-size:12px;color:#5f6368;">' + location + '</span>' : '')
@@ -193,7 +196,7 @@
 			}
 			var playStoreUrl = 'https://play.google.com/store/apps/details?id=' + encodeURIComponent(pkg);
 			return ''
-				+ '<div style="font-family:Arial,sans-serif;max-width:260px;text-align:center;">'
+				+ '<div style="font-family:Roboto,Arial,sans-serif;max-width:260px;text-align:center;">'
 				+ iconHtml
 				+ '<strong style="display:block;">' + title + '</strong>'
 				+ (location ? '<span style="display:block;margin-top:4px;margin-bottom:8px;font-size:12px;color:#5f6368;">' + location + '</span>' : '')

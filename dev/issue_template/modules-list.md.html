@@ -93,11 +93,20 @@
 			}
 
 			async function copyOutput() {
+				const status = document.getElementById("status");
 				const output = document.getElementById("output");
 				if (!output.value) {
 					return;
 				}
-				await navigator.clipboard.writeText(output.value);
+				try {
+					if (!navigator.clipboard || !navigator.clipboard.writeText) {
+						throw new Error("Clipboard API not available in this context.");
+					}
+					await navigator.clipboard.writeText(output.value);
+					status.textContent = "Copied to clipboard.";
+				} catch (e) {
+					status.textContent = "Copy failed: " + (e && e.message ? e.message : e);
+				}
 			}
 
 			function downloadOutput() {

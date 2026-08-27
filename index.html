@@ -3,8 +3,13 @@
 
 <head>
 	<title>MonTransit</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="manifest" href="manifest.json">
 	<meta name="application-name" content="MonTransit">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- <link rel="icon" sizes="16x16 32x32 48x48" href="lo_def.ico">-->
 	<link rel="icon" sizes="512x512" href="hi-res-app-icon.png">
 	<!-- https://raw.githubusercontent.com/mtransitapps/mtransit-for-android/master/pub/hi-res-app-icon.png -->
@@ -18,39 +23,41 @@
 		}
 
 		.logo {
-			position: absolute;
-			margin: auto;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			width: 128px;
-			height: 128px;
+			width: 32px;
+			height: 32px;
+			display: block;
 		}
 
-		.store-link {
+		.top-left {
 			position: absolute;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			display: block;
-			width: 50%;
+			top: 16px;
+			left: 16px;
+			z-index: 2;
+			display: flex;
+			align-items: center;
+			gap: 8px;
 		}
 
-		.store-link-logo {
-			display: block;
-			width: 100%;
-			height: auto;
-			max-width: 256px;
-			margin-left: auto;
-			margin-right: auto;
+		.brand-title {
+			font-family: Roboto, Arial, sans-serif;
+			font-size: 22px;
+			font-weight: 700;
+			color: #FFFFFF;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+			line-height: 1;
+		}
+
+		.top-right {
+			position: absolute;
+			top: 8px;
+			right: 8px;
+			z-index: 2;
+			display: flex;
+			align-items: center;
+			gap: 2px;
 		}
 
 		.github-link {
-			position: absolute;
-			top: 16px;
-			right: 16px;
-			z-index: 2;
 			display: block;
 		}
 
@@ -60,52 +67,286 @@
 			height: 32px;
 		}
 
+		.store-link {
+			display: block;
+		}
+
+		.store-link-logo {
+			display: block;
+			width: auto;
+			height: 44px;
+		}
+
 		#map {
 			width: 100%;
 			height: 100%;
 		}
+
+		@media (max-width: 384px) {
+			.top-right {
+				top: 56px;
+			}
+		}
 	</style>
 
 	<!-- This APK key is restricted to 'Maps JavaScript API' on 'mtransitapps.github.io' website: -->
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrAHs1Dp4dgQxA0-17PJqaCfK_Jpg85Hs"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrAHs1Dp4dgQxA0-17PJqaCfK_Jpg85Hs&libraries=maps,marker"></script>
 	<!-- Use demo key for local testing: https://developers.google.com/maps/documentation/javascript/demo-key -->
-	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=INSERT_DEMO_KEY_HERE"></script> -->
+	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=INSERT_DEMO_KEY_HERE&libraries=maps,marker"></script> -->
 
 	<script type="text/javascript">
-		google.maps.event.addDomListener(window, 'load', init);
+		var DEFAULT_LAT = 45.5230433; // Montreal office
+		var DEFAULT_LNG = -73.5814131; // Montreal office
+
+		window.addEventListener('load', init);
 
 		function init() {
 			var mapOptions = {
-				zoom: 17,
-				center: new google.maps.LatLng(45.5230433, -73.5814131), // Montreal office
+				zoom: 10,
+				center: new google.maps.LatLng(DEFAULT_LAT, DEFAULT_LNG),
 				mapTypeId: 'roadmap',
 				disableDefaultUI: true,
 				// colorScheme: ColorScheme.DARK,
 				styles: [
 					{ featureType: "all", elementType: "all", stylers: [{ visibility: "off" }] },
 					{ featureType: 'road', elementType: 'geometry', stylers: [{ visibility: "simplified" }, { color: '#3D2730' }] },
-					{ featureType: 'water', elementType: 'all', stylers: [{ visibility: "simplified" }, { color: '#58454F' }] },
-					{ featureType: 'landscape', elementType: 'all', stylers: [{ visibility: "simplified" }, { color: '#230913' }] },
+					{ featureType: 'water', elementType: 'geometry', stylers: [{ visibility: "simplified" }, { color: '#58454F' }] },
+					{ featureType: 'landscape', elementType: 'geometry', stylers: [{ visibility: "simplified" }, { color: '#230913' }] },
 				]
 			};
 			var mapElement = document.getElementById('map');
 			var map = new google.maps.Map(mapElement, mapOptions);
+			loadMarkers(map);
+			centerMapOnDeviceLocation(map);
+		}
+
+		function centerMapOnDeviceLocation(map) {
+			if (navigator.geolocation) {
+				centerMapOnDeviceLocationNavigator(map)
+					.catch(function () {
+						return centerMapOnDeviceLocationIpwhois(map);
+					})
+					.catch(function () {
+						setDefaultMapCenter(map);
+					});
+				return;
+			}
+			centerMapOnDeviceLocationIpwhois(map)
+				.catch(function () {
+					setDefaultMapCenter(map);
+				});
+		}
+
+		function centerMapOnDeviceLocationIpwhois(map) {
+			return fetch('https://ipwho.is/', { cache: 'no-store' })
+				.then(function (response) {
+					if (!response.ok) {
+						throw new Error('ipwho.is lookup failed: ' + response.status);
+					}
+					return response.json();
+				})
+				.then(function (result) {
+					if (!result || result.success !== true) {
+						throw new Error('ipwho.is returned unsuccessful response');
+					}
+					var lat = Number(result.latitude);
+					var lng = Number(result.longitude);
+					if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+						throw new Error('ipwho.is returned invalid coordinates');
+					}
+					map.setCenter(new google.maps.LatLng(lat, lng));
+					return true;
+				})
+				.catch(function (error) {
+					console.warn('ipwho.is geolocation failed:', error);
+					throw error;
+				});
+		}
+
+		function centerMapOnDeviceLocationNavigator(map) {
+			return new Promise(function (resolve, reject) {
+				if (!navigator.geolocation) {
+					reject(new Error('navigator.geolocation is unavailable'));
+					return;
+				}
+				navigator.geolocation.getCurrentPosition(
+					function (position) {
+						var lat = Number(position.coords && position.coords.latitude);
+						var lng = Number(position.coords && position.coords.longitude);
+						if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+							reject(new Error('navigator geolocation returned invalid coordinates'));
+							return;
+						}
+						map.setCenter(new google.maps.LatLng(lat, lng));
+						resolve(true);
+					},
+					function (error) {
+						console.warn('Navigator geolocation failed:', error);
+						reject(error);
+					},
+					{ enableHighAccuracy: false, timeout: 5000, maximumAge: 3600000 }
+				);
+			});
+		}
+
+		function setDefaultMapCenter(map) {
+			console.warn('Using default map center (Montreal office).');
+			map.setCenter(new google.maps.LatLng(DEFAULT_LAT, DEFAULT_LNG));
+		}
+
+		function loadMarkers(map) {
+			var infoWindow = new google.maps.InfoWindow();
+			var showBetaModules = new URLSearchParams(window.location.search).get('beta') === 'true';
+
+			fetch('data/modules.json', { cache: 'no-store' })
+				.then(function (response) {
+					if (!response.ok) {
+						throw new Error('Failed to load modules.json: ' + response.status);
+					}
+					return response.json();
+				})
+				.then(function (modules) {
+					modules.forEach(function (module) {
+						if (!showBetaModules && module.store !== 'production') {
+							return;
+						}
+
+						var lat = parseFloat(module.lat);
+						var lng = parseFloat(module.lng);
+						if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+							return;
+						}
+
+						var position = new google.maps.LatLng(lat, lng);
+						var color = normalizeHexColor(module.color);
+						var iconName = markerIconNameForTypeId(module.type_id);
+						var marker = new google.maps.Marker({
+							position: position,
+							map: map,
+							title: module.name || module.pkg || 'MonTransit',
+							icon: {
+								path: google.maps.SymbolPath.CIRCLE,
+								fillColor: color,
+								fillOpacity: 1,
+								strokeColor: '#FFFFFF',
+								strokeWeight: 1,
+								scale: 13
+							},
+							label: iconName ? {
+								text: iconName,
+								color: '#FFFFFF',
+								fontFamily: 'Material Icons',
+								fontSize: '17px',
+								fontWeight: '400'
+							} : undefined
+						});
+
+						marker.addListener('click', function () {
+							infoWindow.setContent(buildInfoWindowContent(module));
+							infoWindow.open(map, marker);
+						});
+					});
+				})
+				.catch(function (error) {
+					console.error('Could not render map markers from modules.json', error);
+				});
+		}
+
+		function markerIconNameForTypeId(typeId) {
+			var value = (typeId || '').toString().trim();
+			switch (value) {
+				case '0': // LIGHT_RAIL
+					return 'tram';
+				case '1': // SUBWAY
+					return 'subway';
+				case '2': // TRAIN
+					return 'directions_railway';
+				case '3': // BUS
+					return 'directions_bus';
+				case '4': // FERRY
+					return 'directions_boat_filled';
+				case '100': // BIKE
+					return 'directions_bike';
+				default:
+					return '';
+			}
+		}
+
+		function buildInfoWindowContent(module) {
+			var title = escapeHtml(module.name || module.pkg || 'MonTransit');
+			var location = escapeHtml(module.location || '');
+			var pkg = (module.pkg || '').toString().trim();
+			var repo = (module.repo || '').toString().trim();
+			var iconUrl = '';
+			if (repo) {
+				iconUrl = 'https://raw.githubusercontent.com/mtransitapps/'
+					+ encodeURIComponent(repo)
+					+ '/master/app-android/src/main/play/listings/en-US/graphics/icon/1.png';
+			}
+			var iconHtml = iconUrl
+				? '<img src="' + iconUrl + '" alt="' + title + ' icon" style="width:48px;height:48px;display:block;margin:0 auto 8px auto;border-radius:8px;">'
+				: '';
+			if (!pkg) {
+				return ''
+					+ '<div style="font-family:Roboto,Arial,sans-serif;max-width:256px;text-align:center;">'
+					+ iconHtml
+					+ '<strong style="display:block;">' + title + '</strong>'
+					+ (location ? '<span style="display:block;margin-top:4px;margin-bottom:8px;font-size:12px;color:#5f6368;">' + location + '</span>' : '')
+					+ '</div>';
+			}
+			var playStoreUrl = 'https://play.google.com/store/apps/details?id=' + encodeURIComponent(pkg);
+			return ''
+				+ '<div style="font-family:Roboto,Arial,sans-serif;max-width:256px;text-align:center;">'
+				+ iconHtml
+				+ '<strong style="display:block;">' + title + '</strong>'
+				+ (location ? '<span style="display:block;margin-top:4px;margin-bottom:8px;font-size:12px;color:#5f6368;">' + location + '</span>' : '')
+				+ '<a href="' + playStoreUrl + '" target="_blank" rel="noopener noreferrer" aria-label="Open on Google Play" style="display:inline-block;">'
+				+ '<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"'
+				+ ' alt="Get it on Google Play" style="width:180px;height:auto;display:block;margin:0 auto;">'
+				+ '</a>'
+				+ '</div>';
+		}
+
+		function escapeHtml(value) {
+			return (value || '').toString()
+				.replace(/&/g, '&amp;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#39;');
+		}
+
+		function normalizeHexColor(color) {
+			var value = (color || '').toString().trim();
+			if (!value) {
+				return '#1E88E5';
+			}
+			if (value.charAt(0) !== '#') {
+				value = '#' + value;
+			}
+			return /^#[0-9A-Fa-f]{6}$/.test(value) ? value : '#1E88E5';
 		}
 	</script>
 </head>
 
 <body>
 	<div id="map"></div>
-	<a class="github-link" href="https://github.com/mtransitapps" target="_blank" rel="noopener noreferrer" aria-label="MonTransit on GitHub">
-		<img class="github-logo" src="img/gitHub_invertocat_white_clearspace.png" alt="GitHub" />
-	</a>
-	<img class="logo" src="hi-res-app-icon.png" alt="MonTransit" />
-	<!-- <div class="footer-container"> -->
-	<a class="store-link" href="https://play.google.com/store/apps/details?id=org.mtransit.android" target="_blank" rel="noopener noreferrer" aria-label="MonTransit on the Play Store">
-		<img class="store-link-logo"
-			src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" />
-	</a>
-	<!-- </div> -->
+	<div class="top-left">
+		<img class="logo" src="hi-res-app-icon.png" alt="MonTransit" />
+		<span class="brand-title">MonTransit</span>
+	</div>
+	<div class="top-right">
+		<a class="store-link" href="https://play.google.com/store/apps/details?id=org.mtransit.android" target="_blank"
+			rel="noopener noreferrer" aria-label="MonTransit on the Play Store">
+			<img class="store-link-logo"
+				src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+				alt="Get it on Google Play" />
+		</a>
+		<a class="github-link" href="https://github.com/mtransitapps" target="_blank" rel="noopener noreferrer"
+			aria-label="MonTransit on GitHub">
+			<img class="github-logo" src="img/gitHub_invertocat_white_clearspace.png" alt="GitHub" />
+		</a>
+	</div>
 </body>
 
 </html>

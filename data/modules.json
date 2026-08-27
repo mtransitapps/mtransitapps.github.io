@@ -1779,18 +1779,6 @@
     "repo": "fr-perpignan-sankeo-bus-android",
     "pkg": "org.mtransit.android.fr_perpignan_sankeo_bus",
     "store": "beta-private",
-    "name": "TODO",
-    "name_fr": "TODO",
-    "location": "TODO",
-    "type_id": "TODO",
-    "color": "TODO",
-    "lat": "TODO",
-    "lng": "TODO"
-  },
-  {
-    "repo": "fr-pyrenees-orientales-lio-bus-android",
-    "pkg": "org.mtransit.android.fr_pyrenees_orientales_lio_bus",
-    "store": "beta-private",
     "name": "Sankéo",
     "name_fr": "Sankéo",
     "location": "Perpignan, Pyrénées-Orientales, France",
@@ -1798,6 +1786,18 @@
     "color": "00A9CE",
     "lat": "42.688659",
     "lng": "2.894833"
+  },
+  {
+    "repo": "fr-pyrenees-orientales-lio-bus-android",
+    "pkg": "org.mtransit.android.fr_pyrenees_orientales_lio_bus",
+    "store": "beta-private",
+    "name": "liO Pyrénées-Orientales (66)",
+    "name_fr": "liO Pyrénées-Orientales (66)",
+    "location": "Perpignan, Quillan, Salses, Lansac, Millas, Thuir, Vinça, Prades, Arles sur Tech, Prats de Mollo, Banyuls sur Mer, Port-Vendres, St Cyprien, Céret, Cabestany, Argeles, Formigueres, Mont-Louis, La Cabanasse, Tresserre, Pyrénées-Orientales, France",
+    "type_id": "3",
+    "color": "CB1C27",
+    "lat": "42.6310645",
+    "lng": "2.49488"
   },
   {
     "repo": "us-anchorage-people-mover-bus-android",

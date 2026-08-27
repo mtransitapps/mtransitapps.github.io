@@ -351,7 +351,9 @@
 		}
 
 		function buildInfoWindowContent(module) {
-			var title = escapeHtml(module.name || module.pkg || 'MonTransit');
+			var isBetaPrivate = (module.store || '').toString().trim() === 'beta-private';
+			var baseTitle = (module.name || module.pkg || 'MonTransit');
+			var title = escapeHtml(baseTitle + (isBetaPrivate ? ' [BETA]' : ''));
 			var location = escapeHtml(module.location || '');
 			var pkg = (module.pkg || '').toString().trim();
 			var repo = (module.repo || '').toString().trim();
@@ -372,7 +374,9 @@
 					+ (location ? '<span style="display:block;margin-top:4px;margin-bottom:8px;font-size:12px;color:#5f6368;">' + location + '</span>' : '')
 					+ '</div>';
 			}
-			var playStoreUrl = 'https://play.google.com/store/apps/details?id=' + encodeURIComponent(pkg);
+			var playStoreUrl = isBetaPrivate
+				? 'https://play.google.com/apps/testing/' + encodeURIComponent(pkg)
+				: 'https://play.google.com/store/apps/details?id=' + encodeURIComponent(pkg);
 			return ''
 				+ '<div style="font-family:Roboto,Arial,sans-serif;max-width:256px;text-align:center;">'
 				+ iconHtml

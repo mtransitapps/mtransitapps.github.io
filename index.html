@@ -3,11 +3,13 @@
 
 <head>
 	<title>MonTransit</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="manifest" href="manifest.json">
 	<meta name="application-name" content="MonTransit">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- <link rel="icon" sizes="16x16 32x32 48x48" href="lo_def.ico">-->
 	<link rel="icon" sizes="512x512" href="hi-res-app-icon.png">
 	<!-- https://raw.githubusercontent.com/mtransitapps/mtransit-for-android/master/pub/hi-res-app-icon.png -->
@@ -47,12 +49,12 @@
 
 		.top-right {
 			position: absolute;
-			top: 2px;
-			right: 2px;
+			top: 8px;
+			right: 8px;
 			z-index: 2;
 			display: flex;
 			align-items: center;
-			gap: 8px;
+			gap: 2px;
 		}
 
 		.github-link {
@@ -79,6 +81,12 @@
 			width: 100%;
 			height: 100%;
 		}
+
+		@media (max-width: 384px) {
+			.top-right {
+				top: 56px;
+			}
+		}
 	</style>
 
 	<!-- This APK key is restricted to 'Maps JavaScript API' on 'mtransitapps.github.io' website: -->
@@ -87,8 +95,8 @@
 	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=INSERT_DEMO_KEY_HERE&libraries=maps,marker"></script> -->
 
 	<script type="text/javascript">
-		var DEFAULT_LAT = 45.5230433;  // Montreal office
-		var DEFAULT_LNG = -73.5814131;  // Montreal office
+		var DEFAULT_LAT = 45.5230433; // Montreal office
+		var DEFAULT_LNG = -73.5814131; // Montreal office
 
 		google.maps.event.addDomListener(window, 'load', init);
 
@@ -210,6 +218,7 @@
 
 						var position = new google.maps.LatLng(lat, lng);
 						var color = normalizeHexColor(module.color);
+						var iconName = markerIconNameForTypeId(module.type_id);
 						var marker = new google.maps.Marker({
 							position: position,
 							map: map,
@@ -220,8 +229,15 @@
 								fillOpacity: 1,
 								strokeColor: '#FFFFFF',
 								strokeWeight: 1,
-								scale: 7
-							}
+								scale: 13
+							},
+							label: iconName ? {
+								text: iconName,
+								color: '#FFFFFF',
+								fontFamily: 'Material Icons',
+								fontSize: '14px',
+								fontWeight: '400'
+							} : undefined
 						});
 
 						marker.addListener('click', function () {
@@ -233,6 +249,26 @@
 				.catch(function (error) {
 					console.error('Could not render map markers from modules.json', error);
 				});
+		}
+
+		function markerIconNameForTypeId(typeId) {
+			var value = (typeId || '').toString().trim();
+			switch (value) {
+				case '0': // LIGHT_RAIL
+					return 'tram';
+				case '1': // SUBWAY
+					return 'subway';
+				case '2': // TRAIN
+					return 'directions_railway';
+				case '3': // BUS
+					return 'directions_bus';
+				case '4': // FERRY
+					return 'directions_boat_filled';
+				case '100': // BIKE
+					return 'directions_bike';
+				default:
+					return '';
+			}
 		}
 
 		function buildInfoWindowContent(module) {
@@ -299,11 +335,14 @@
 		<span class="brand-title">MonTransit</span>
 	</div>
 	<div class="top-right">
-		<a class="store-link" href="https://play.google.com/store/apps/details?id=org.mtransit.android" target="_blank" rel="noopener noreferrer" aria-label="MonTransit on the Play Store">
+		<a class="store-link" href="https://play.google.com/store/apps/details?id=org.mtransit.android" target="_blank"
+			rel="noopener noreferrer" aria-label="MonTransit on the Play Store">
 			<img class="store-link-logo"
-				src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
+				src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+				alt="Get it on Google Play" />
 		</a>
-		<a class="github-link" href="https://github.com/mtransitapps" target="_blank" rel="noopener noreferrer" aria-label="MonTransit on GitHub">
+		<a class="github-link" href="https://github.com/mtransitapps" target="_blank" rel="noopener noreferrer"
+			aria-label="MonTransit on GitHub">
 			<img class="github-logo" src="img/gitHub_invertocat_white_clearspace.png" alt="GitHub" />
 		</a>
 	</div>

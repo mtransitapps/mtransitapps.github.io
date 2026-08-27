@@ -32,10 +32,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # TODO: Inject the API Key secret into the source file
-      # - name: Inject API Key
-      #   run: |
-      #     sed -i 's/REPLACE_WITH_MY_API_KEY/${{ secrets.MY_API_KEY }}/g' main.js
+      # Inject the API Key secret into the source file
+      - name: Inject API Key
+        env:
+          MT_MAPS_JS_API_KEY: ${{ secrets.MT_MAPS_JS_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${MT_MAPS_JS_API_KEY}" ]; then
+            echo "MT_MAPS_JS_API_KEY is not set" >&2
+            exit 1
+          fi
+          esc_key=$(printf '%s' "$MT_MAPS_JS_API_KEY" | sed -e 's/[\\/&]/\\\\&/g')
+          sed -i "s/MT_REPLACE_WITH_MAPS_JS_API_KEY/${esc_key}/g" ./index.html
+          sed -i "s/MT_REPLACE_WITH_MAPS_JS_API_KEY/${esc_key}/g" ./dev/map/empty.html
 
 
       - name: Setup Pages

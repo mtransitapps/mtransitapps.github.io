@@ -21,37 +21,41 @@
 		}
 
 		.logo {
+			width: 32px;
+			height: 32px;
+			display: block;
+		}
+
+		.top-left {
 			position: absolute;
 			top: 16px;
 			left: 16px;
-			width: 32px;
-			height: 32px;
 			z-index: 2;
+			display: flex;
+			align-items: center;
+			gap: 8px;
 		}
 
-		.store-link {
+		.brand-title {
+			font-family: Roboto, Arial, sans-serif;
+			font-size: 22px;
+			font-weight: 700;
+			color: #FFFFFF;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+			line-height: 1;
+		}
+
+		.top-right {
 			position: absolute;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			display: block;
-			width: 50%;
-		}
-
-		.store-link-logo {
-			display: block;
-			width: 100%;
-			height: auto;
-			max-width: 128px;
-			margin-left: auto;
-			margin-right: auto;
+			top: 2px;
+			right: 2px;
+			z-index: 2;
+			display: flex;
+			align-items: center;
+			gap: 8px;
 		}
 
 		.github-link {
-			position: absolute;
-			top: 16px;
-			right: 16px;
-			z-index: 2;
 			display: block;
 		}
 
@@ -59,6 +63,16 @@
 			display: block;
 			width: 32px;
 			height: 32px;
+		}
+
+		.store-link {
+			display: block;
+		}
+
+		.store-link-logo {
+			display: block;
+			width: auto;
+			height: 44px;
 		}
 
 		#map {
@@ -88,8 +102,8 @@
 				styles: [
 					{ featureType: "all", elementType: "all", stylers: [{ visibility: "off" }] },
 					{ featureType: 'road', elementType: 'geometry', stylers: [{ visibility: "simplified" }, { color: '#3D2730' }] },
-					{ featureType: 'water', elementType: 'all', stylers: [{ visibility: "simplified" }, { color: '#58454F' }] },
-					{ featureType: 'landscape', elementType: 'all', stylers: [{ visibility: "simplified" }, { color: '#230913' }] },
+					{ featureType: 'water', elementType: 'geometry', stylers: [{ visibility: "simplified" }, { color: '#58454F' }] },
+					{ featureType: 'landscape', elementType: 'geometry', stylers: [{ visibility: "simplified" }, { color: '#230913' }] },
 				]
 			};
 			var mapElement = document.getElementById('map');
@@ -188,7 +202,7 @@
 				: '';
 			if (!pkg) {
 				return ''
-					+ '<div style="font-family:Roboto,Arial,sans-serif;max-width:260px;text-align:center;">'
+					+ '<div style="font-family:Roboto,Arial,sans-serif;max-width:256px;text-align:center;">'
 					+ iconHtml
 					+ '<strong style="display:block;">' + title + '</strong>'
 					+ (location ? '<span style="display:block;margin-top:4px;margin-bottom:8px;font-size:12px;color:#5f6368;">' + location + '</span>' : '')
@@ -196,7 +210,7 @@
 			}
 			var playStoreUrl = 'https://play.google.com/store/apps/details?id=' + encodeURIComponent(pkg);
 			return ''
-				+ '<div style="font-family:Roboto,Arial,sans-serif;max-width:260px;text-align:center;">'
+				+ '<div style="font-family:Roboto,Arial,sans-serif;max-width:256px;text-align:center;">'
 				+ iconHtml
 				+ '<strong style="display:block;">' + title + '</strong>'
 				+ (location ? '<span style="display:block;margin-top:4px;margin-bottom:8px;font-size:12px;color:#5f6368;">' + location + '</span>' : '')
@@ -231,16 +245,19 @@
 
 <body>
 	<div id="map"></div>
-	<a class="github-link" href="https://github.com/mtransitapps" target="_blank" rel="noopener noreferrer" aria-label="MonTransit on GitHub">
-		<img class="github-logo" src="img/gitHub_invertocat_white.png" alt="GitHub" />
-	</a>
-	<img class="logo" src="hi-res-app-icon.png" alt="MonTransit" />
-	<!-- <div class="footer-container"> -->
-	<a class="store-link" href="https://play.google.com/store/apps/details?id=org.mtransit.android" target="_blank" rel="noopener noreferrer" aria-label="MonTransit on the Play Store">
-		<img class="store-link-logo"
-			src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" />
-	</a>
-	<!-- </div> -->
+	<div class="top-left">
+		<img class="logo" src="hi-res-app-icon.png" alt="MonTransit" />
+		<span class="brand-title">MonTransit</span>
+	</div>
+	<div class="top-right">
+		<a class="store-link" href="https://play.google.com/store/apps/details?id=org.mtransit.android" target="_blank" rel="noopener noreferrer" aria-label="MonTransit on the Play Store">
+			<img class="store-link-logo"
+				src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
+		</a>
+		<a class="github-link" href="https://github.com/mtransitapps" target="_blank" rel="noopener noreferrer" aria-label="MonTransit on GitHub">
+			<img class="github-logo" src="img/gitHub_invertocat_white_clearspace.png" alt="GitHub" />
+		</a>
+	</div>
 </body>
 
 </html>

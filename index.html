@@ -98,7 +98,7 @@
 		var DEFAULT_LAT = 45.5230433; // Montreal office
 		var DEFAULT_LNG = -73.5814131; // Montreal office
 
-		google.maps.event.addDomListener(window, 'load', init);
+		window.addEventListener('load', init);
 
 		function init() {
 			var mapOptions = {
@@ -196,6 +196,7 @@
 
 		function loadMarkers(map) {
 			var infoWindow = new google.maps.InfoWindow();
+			var showBetaModules = new URLSearchParams(window.location.search).get('beta') === 'true';
 
 			fetch('data/modules.json', { cache: 'no-store' })
 				.then(function (response) {
@@ -206,7 +207,7 @@
 				})
 				.then(function (modules) {
 					modules.forEach(function (module) {
-						if (module.store !== 'production') {
+						if (!showBetaModules && module.store !== 'production') {
 							return;
 						}
 

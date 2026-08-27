@@ -50,7 +50,12 @@
 						pkgs.push(moduleEntry.pkg);
 					}
 				} catch (error) {
-					console.error("Unable to load modules list:", error);
+					const msg = "Unable to load modules list: " + (error && error.message ? error.message : String(error));
+					console.error(msg, error);
+					const p = document.createElement("p");
+					p.style.color = "#b00020";
+					p.textContent = msg;
+					document.body.prepend(p);
 				}
 				var branches = [
 					"master",

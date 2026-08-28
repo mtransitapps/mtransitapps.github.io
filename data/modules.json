@@ -1409,7 +1409,7 @@
   },
   {
     "repo": "ca-st-thomas-railway-city-transit-bus-android",
-    "pkg": "org.mtransit.android.ca_st_thomas_railway_city_transit_bus"
+    "pkg": "org.mtransit.android.ca_st_thomas_railway_city_transit_bus",
     "store": "internal",
     "name": "Railway City Transit (RCT)",
     "location": "St. Thomas, ON, Canada",

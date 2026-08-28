@@ -178,6 +178,9 @@
 					var lng = Number(position.coords && position.coords.longitude);
 					if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
 						console.warn('Navigator geolocation returned invalid coordinates');
+						centerMapOnDeviceLocationIpwhois(map).catch(function () {
+							setDefaultMapCenter(map);
+						});
 						return;
 					}
 					map.setCenter(new google.maps.LatLng(lat, lng));

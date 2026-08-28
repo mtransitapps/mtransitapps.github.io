@@ -1408,6 +1408,17 @@
     "lng": "-52.785159"
   },
   {
+    "repo": "ca-st-thomas-railway-city-transit-bus-android",
+    "pkg": "org.mtransit.android.ca_st_thomas_railway_city_transit_bus"
+    "store": "internal",
+    "name": "Railway City Transit (RCT)",
+    "location": "St. Thomas, ON, Canada",
+    "type_id": "3",
+    "color": "9C2037",
+    "lat": "42.7788058",
+    "lng": "-81.1903511"
+  }
+  {
     "repo": "ca-stratford-transit-bus-android",
     "pkg": "org.mtransit.android.ca_stratford_transit_bus",
     "store": "production",

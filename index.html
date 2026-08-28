@@ -247,7 +247,7 @@
 				? navigator.permissions.query({ name: 'geolocation' })
 				: Promise.resolve({ state: 'prompt' });
 
-return permissionCheck.then(function (permissionStatus) {
+			return permissionCheck.then(function (permissionStatus) {
 				if (permissionStatus && permissionStatus.state === 'denied') {
 					throw new Error('Geolocation permission is denied');
 				}

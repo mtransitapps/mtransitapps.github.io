@@ -704,8 +704,8 @@
     "location": "Montréal, Westmount, Longueuil, QC, Canada",
     "type_id": "100",
     "color": "D42B1E",
-    "lat": "45.542771",
-    "lng": "-73.581281"
+    "lat": "45.5298030",
+    "lng": "-73.6017613"
   },
   {
     "repo": "ca-montreal-rem-light-rail-android",
@@ -716,8 +716,8 @@
     "location": "Montréal, Brossard, QC, Canada",
     "type_id": "0",
     "color": "72A300",
-    "lat": "45.4963635",
-    "lng": "-73.5587732"
+    "lat": "45.4886275",
+    "lng": "-73.671519"
   },
   {
     "repo": "ca-montreal-stm-bus-android",
@@ -728,8 +728,8 @@
     "location": "Montréal, QC, Canada",
     "type_id": "3",
     "color": "009EE0",
-    "lat": "45.531345",
-    "lng": "-73.600690"
+    "lat": "45.5030648",
+    "lng": "-73.6250070"
   },
   {
     "repo": "ca-montreal-stm-subway-android",

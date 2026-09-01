@@ -196,8 +196,17 @@
 		}
 
 		function centerMapOnDeviceLocation(map) {
-			if (navigator.geolocation) {
-				centerMapOnDeviceLocationNavigator(map)
+			// Only use the browser's navigator.geolocation automatically if permission
+			// was already granted, so we never trigger the permission prompt/dialog
+			// without the user explicitly clicking the "my location" button.
+			if (navigator.geolocation && navigator.permissions && navigator.permissions.query) {
+				navigator.permissions.query({ name: 'geolocation' })
+					.then(function (permissionStatus) {
+						if (permissionStatus && permissionStatus.state === 'granted') {
+							return centerMapOnDeviceLocationNavigator(map);
+						}
+						return centerMapOnDeviceLocationIpwhois(map);
+					})
 					.catch(function () {
 						return centerMapOnDeviceLocationIpwhois(map);
 					})

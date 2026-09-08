@@ -1,11 +1,12 @@
 name: MT trigger main repo modules update
 
 on:
-  push:
-    branches: ["master"]
-    paths:
-      - "data/modules.json"
   workflow_dispatch: # manual
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'data/modules.json'
 
 permissions:
   contents: read
@@ -15,7 +16,7 @@ jobs:
     name: "MT trigger main repo modules update"
     runs-on: ubuntu-latest
     steps:
-      - name: MT trigger mt-modules-update.yml in mtransit-for-android
+      - name: "MT trigger 'mt-modules-update.yml' in 'mtransit-for-android'"
         run: |
           gh workflow run mt-modules-update.yml --repo mtransitapps/mtransit-for-android
         env:

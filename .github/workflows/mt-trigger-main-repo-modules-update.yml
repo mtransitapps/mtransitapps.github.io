@@ -20,4 +20,5 @@ jobs:
         run: |
           gh workflow run mt-modules-update.yml --repo mtransitapps/mtransit-for-android
         env:
+          # MT_PAT must be allowed to trigger workflows in mtransitapps/mtransit-for-android (classic PAT: `workflow`; fine-grained: Actions = Read and write).
           GH_TOKEN: ${{ secrets.MT_PAT }}

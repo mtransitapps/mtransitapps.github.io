@@ -17,7 +17,6 @@ jobs:
     steps:
       - name: MT trigger mt-modules-update.yml in mtransit-for-android
         run: |
-          gh api repos/mtransitapps/mtransit-for-android/dispatches \
-            -f event_type=mt-modules-update
+          gh workflow run mt-modules-update.yml --repo mtransitapps/mtransit-for-android
         env:
           GH_TOKEN: ${{ secrets.MT_PAT }}

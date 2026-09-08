@@ -1,0 +1,23 @@
+name: MT trigger main repo modules update
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - "data/modules.json"
+  workflow_dispatch: # manual
+
+permissions:
+  contents: read
+
+jobs:
+  MT-TRIGGER-MODULES-UPDATE-JOB:
+    name: "MT trigger main repo modules update"
+    runs-on: ubuntu-latest
+    steps:
+      - name: MT trigger mt-modules-update.yml in mtransit-for-android
+        run: |
+          gh api repos/mtransitapps/mtransit-for-android/dispatches \
+            -f event_type=mt-modules-update
+        env:
+          GH_TOKEN: ${{ secrets.MT_PAT }}

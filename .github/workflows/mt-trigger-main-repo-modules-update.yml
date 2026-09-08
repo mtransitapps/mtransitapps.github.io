@@ -1,0 +1,24 @@
+name: MT trigger main repo modules update
+
+on:
+  workflow_dispatch: # manual
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'data/modules.json'
+
+permissions:
+  contents: read
+
+jobs:
+  mt-trigger-modules-update-job:
+    name: "MT trigger main repo modules update"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "MT trigger 'mt-modules-update.yml' in 'mtransit-for-android'"
+        run: |
+          gh workflow run mt-modules-update.yml --repo mtransitapps/mtransit-for-android
+        env:
+          # MT_PAT must be allowed to trigger workflows in mtransitapps/mtransit-for-android (classic PAT: `workflow`; fine-grained: Actions = Read and write).
+          GH_TOKEN: ${{ secrets.MT_PAT }}

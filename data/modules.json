@@ -1296,7 +1296,7 @@
   {
     "repo": "ca-simcoe-county-linx-transit-bus-android",
     "pkg": "org.mtransit.android.ca_simcoe_county_linx_transit_bus",
-    "store": "internal",
+    "store": "production",
     "name": "LINX Transit (Simcoe County)",
     "location": "Alliston, Barrie, Beeton, Bradford, Collingwood, Midhurst, Midland, Orillia, Penetanguishene, Wasaga Beach, ON, Canada",
     "type_id": "3",

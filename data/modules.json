@@ -652,7 +652,7 @@
   {
     "repo": "ca-middlesex-county-connect-bus-android",
     "pkg": "org.mtransit.android.ca_middlesex_county_connect_bus",
-    "store": "internal",
+    "store": "production",
     "name": "Middlesex County Connect",
     "location": "Arva, Dorchester, Ingersoll, Ilderton, Lucan, Komoka, London, Mt. Brydges, Putnam, Sarnia, Southwold, St. Thomas, Strathroy, Woodstock, ON, Canada",
     "type_id": "3",

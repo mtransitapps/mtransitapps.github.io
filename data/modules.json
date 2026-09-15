@@ -190,7 +190,7 @@
   {
     "repo": "ca-chatham-kent-ride-ck-bus-android",
     "pkg": "org.mtransit.android.ca_chatham_kent_ride_ck_bus",
-    "store": "internal",
+    "store": "production",
     "name": "Ride CK (Chatham-Kent)",
     "location": "Blenheim,  Buxton, Cedar Springs, Charing Cross, Chatham, Dealtown, Dresden, Merlin, Ridgetow, Tilbury, Wallaceburg, ON, Canada",
     "type_id": "3",

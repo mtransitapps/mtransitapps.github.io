@@ -674,7 +674,7 @@
   {
     "repo": "ca-midland-mid-pen-transit-bus-android",
     "pkg": "org.mtransit.android.ca_midland_mid_pen_transit_bus",
-    "store": "internal",
+    "store": "production",
     "name": "Mid-Pen Transit",
     "location": "Midland, Penetanguishene, ON, Canada",
     "type_id": "3",

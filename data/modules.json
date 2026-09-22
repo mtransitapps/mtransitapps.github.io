@@ -71,7 +71,7 @@
     "store": "internal",
     "name": "BC Ferries",
     "location": "Bowen Island, Campbell River, Comox, Nanaimo, Southern Gulf Islands, Sunshine Coast, Vancouver, Victoria, BC, Canada",
-    "type_id": "4".
+    "type_id": "4",
     "color": "003366",
     "lat": "49.329057",
     "lng": "-123.783126"

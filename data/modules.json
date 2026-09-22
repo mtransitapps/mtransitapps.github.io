@@ -68,7 +68,7 @@
   {
     "repo": "ca-bc-ferries-ferry-android",
     "pkg": "org.mtransit.android.ca_bc_ferries_ferry",
-    "store": "internal",
+    "store": "production",
     "name": "BC Ferries",
     "location": "Bowen Island, Campbell River, Comox, Nanaimo, Southern Gulf Islands, Sunshine Coast, Vancouver, Victoria, BC, Canada",
     "type_id": "4",

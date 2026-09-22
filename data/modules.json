@@ -1599,7 +1599,7 @@
   {
     "repo": "ca-trois-rivieres-sttr-bus-android",
     "pkg": "org.mtransit.android.ca_trois_rivieres_sttr_bus",
-    "store": "internal",
+    "store": "production",
     "name": "STTR (Société de transport de Trois-Rivières)",
     "location": "Trois-Rivières, QC, Canada",
     "type_id": "1",

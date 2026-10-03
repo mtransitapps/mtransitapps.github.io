@@ -675,7 +675,7 @@
     "repo": "ca-medicine-hat-transit-bus-android",
     "pkg": "org.mtransit.android.ca_medicine_hat_transit_bus",
     "store": "production",
-    "name": "MRT (Medicine Hat Transit)",
+    "name": "MHT (Medicine Hat Transit)",
     "location": "Medicine Hat, AB, Canada",
     "type_id": "3",
     "color": "F04C2A",

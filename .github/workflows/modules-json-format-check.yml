@@ -1,0 +1,23 @@
+name: Validate modules.json formatting
+
+on:
+  pull_request:
+    paths:
+      - 'data/modules.json'
+
+permissions:
+  contents: read
+
+jobs:
+  modules-json-format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Validate data/modules.json formatting
+        run: |
+          set -euo pipefail
+          formatted_file="$(mktemp)"
+          jq --indent 2 . data/modules.json > "${formatted_file}"
+          diff -u data/modules.json "${formatted_file}"

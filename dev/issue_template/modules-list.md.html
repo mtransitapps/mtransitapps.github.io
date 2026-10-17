@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Modules List Issue Template Generator</title>
+		<meta charset="utf-8" />
+		<style type="text/css">
+			html, body {
+				height: 100%;
+				margin: 0;
+				font-family: sans-serif;
+			}
+			.container {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+				padding: 12px;
+				box-sizing: border-box;
+				gap: 8px;
+			}
+			.controls {
+				display: flex;
+				gap: 8px;
+				align-items: center;
+			}
+			#status {
+				font-size: 0.9rem;
+				color: #444;
+			}
+			#output {
+				flex: 1;
+				width: 100%;
+				resize: none;
+				box-sizing: border-box;
+				font-family: monospace;
+				font-size: 12px;
+				line-height: 1.4;
+			}
+		</style>
+		<script type="text/javascript">
+			const TEMPLATE_HEADER = [
+				"---",
+				"name: Modules list",
+				"about: List of supported modules",
+				"title: 'Issue requiring changes in all modules'",
+				"labels: MT",
+				"",
+				"---",
+				"",
+				"# Modules"
+			].join("\n");
+
+			function repoToModule(repo) {
+				if (typeof repo !== "string") {
+					return null;
+				}
+				return repo.endsWith("-android")
+					? repo.substring(0, repo.length - "-android".length)
+					: repo;
+			}
+
+			async function loadModules() {
+				if (window.location.protocol === "file:") {
+					throw new Error("Loading modules.json from file:// is blocked by browser security. Open this page via http(s), e.g. a local web server.");
+				}
+				const res = await fetch("../../data/modules.json");
+				if (!res.ok) {
+					throw new Error("HTTP " + res.status + " while loading modules.json");
+				}
+				return res.json();
+			}
+
+			function buildMarkdown(modules) {
+				const items = [];
+				for (const moduleEntry of modules) {
+					const moduleName = repoToModule(moduleEntry && moduleEntry.repo);
+					if (!moduleName) {
+						continue;
+					}
+					items.push("- [ ] " + moduleName);
+				}
+				return TEMPLATE_HEADER + "\n" + items.join("\n") + "\n";
+			}
+
+			async function generate() {
+				const status = document.getElementById("status");
+				const output = document.getElementById("output");
+				status.textContent = "Loading modules...";
+				try {
+					const modules = await loadModules();
+					const markdown = buildMarkdown(modules);
+					output.value = markdown;
+					status.textContent = "Generated " + modules.length + " checklist item(s).";
+				} catch (e) {
+					status.textContent = "Error: " + (e && e.message ? e.message : e);
+				}
+			}
+
+			async function copyOutput() {
+				const status = document.getElementById("status");
+				const output = document.getElementById("output");
+				if (!output.value) {
+					return;
+				}
+				try {
+					if (!navigator.clipboard || !navigator.clipboard.writeText) {
+						throw new Error("Clipboard API not available in this context.");
+					}
+					await navigator.clipboard.writeText(output.value);
+					status.textContent = "Copied to clipboard.";
+				} catch (e) {
+					status.textContent = "Copy failed: " + (e && e.message ? e.message : e);
+				}
+			}
+
+			function downloadOutput() {
+				const output = document.getElementById("output");
+				if (!output.value) {
+					return;
+				}
+				const blob = new Blob([output.value], { type: "text/markdown;charset=utf-8" });
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement("a");
+				a.href = url;
+				a.download = "modules-list.md";
+				document.body.appendChild(a);
+				a.click();
+				a.remove();
+				URL.revokeObjectURL(url);
+			}
+
+			window.onload = generate;
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="controls">
+				<button type="button" onclick="generate()">Regenerate</button>
+				<button type="button" onclick="copyOutput()">Copy Markdown</button>
+				<button type="button" onclick="downloadOutput()">Download Markdown</button>
+				<span id="status"></span>
+			</div>
+			<textarea id="output" aria-label="Generated markdown output"></textarea>
+		</div>
+	</body>
+</html>

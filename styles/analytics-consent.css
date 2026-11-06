@@ -1,0 +1,44 @@
+#analytics-consent, #analytics-settings {
+	position: fixed; left: 12px; z-index: 1000;
+	color: #222; background: #fff; font: 13px/1.4 Arial, sans-serif;
+	border: 1px solid #555; border-radius: 6px;
+}
+#analytics-consent {
+	font-size: 9.75px;
+	bottom: 64px; padding: 12px; width: 240px; max-width: calc(100vw - 24px);
+	box-sizing: border-box; max-height: calc(100vh - 80px); overflow: auto;
+	box-shadow: 0 2px 12px #0006;
+}
+#analytics-consent h2 { margin: 0; font-size: 12px; }
+#analytics-consent p { margin: 8px 0; }
+#analytics-consent p:empty { display: none; }
+#analytics-consent a { color: #174ea6; }
+#analytics-consent button, #analytics-settings {
+	padding: 8px 12px; cursor: pointer; min-height: 44px;
+}
+#analytics-consent .analytics-actions { display: flex; gap: 8px; margin-top: 10px; }
+#analytics-consent button {
+	flex: 1; font-size: 10px; min-height: 32px; padding: 4px 10px;
+	border: 1px solid #555; border-radius: 4px;
+}
+#analytics-settings { bottom: 12px; }
+#analytics-consent :focus-visible, #analytics-settings:focus-visible {
+	outline: 3px solid #174ea6; outline-offset: 2px;
+}
+#analytics-consent.map-consent {
+	left: auto; right: 44px; bottom: 60px; max-width: calc(100vw - 56px);
+	background: #230913; color: #fff; border-color: #58454f; color-scheme: dark;
+}
+#analytics-consent.map-consent a { color: #b8d4ff; }
+#analytics-consent.map-consent button {
+	background: #3d2730; color: #fff; border-color: #8b7780;
+}
+#analytics-consent.map-consent button:hover { background: #58454f; }
+#analytics-settings.my-location-btn {
+	left: auto; right: 8px; bottom: 60px; width: 28px; height: 28px;
+	min-height: 0; padding: 0; border: 1px solid #fff; border-radius: 14px;
+	background: #000; color: #fff;
+}
+#analytics-consent.map-consent :focus-visible, #analytics-settings.my-location-btn:focus-visible {
+	outline-color: #b8d4ff;
+}

@@ -3,6 +3,7 @@
 
 <head>
 	<title>MonTransit</title>
+	<script type="module" src="scripts/firebase.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="manifest" href="manifest.json">
 	<meta name="application-name" content="MonTransit">
@@ -431,29 +432,6 @@
 </head>
 
 <body>
-	<script type="module">
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
-		import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-analytics.js";
-
-		const firebaseConfig = {
-			apiKey: "MT_REPLACE_WITH_FIREBASE_API_KEY",
-			authDomain: "MT_REPLACE_WITH_FIREBASE_PROJECT_ID.firebaseapp.com",
-			projectId: "MT_REPLACE_WITH_FIREBASE_PROJECT_ID",
-			storageBucket: "MT_REPLACE_WITH_FIREBASE_PROJECT_ID.firebasestorage.app",
-			messagingSenderId: "MT_REPLACE_WITH_FIREBASE_MESSAGING_SENDER_ID",
-			appId: "MT_REPLACE_WITH_FIREBASE_APP_ID",
-			measurementId: "MT_REPLACE_WITH_FIREBASE_MEASUREMENT_ID"
-		};
-
-		if (!firebaseConfig.apiKey.startsWith("MT_REPLACE_WITH_")) {
-			const app = initializeApp(firebaseConfig);
-			isSupported().then((supported) => {
-				if (supported) {
-					const analytics = getAnalytics(app);
-				}
-			});
-		}
-	</script>
 	<div id="map"></div>
 	<div class="top-left">
 		<img class="logo" src="hi-res-app-icon.png" alt="MonTransit" />

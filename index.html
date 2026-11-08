@@ -3,7 +3,7 @@
 
 <head>
 	<title>MonTransit</title>
-	<script data-goatcounter="https://mtransitapps.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+	<script data-goatcounter="https://mtransitapps.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 	<script type="module" src="scripts/firebase.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="manifest" href="manifest.json">
@@ -132,7 +132,7 @@
 		var DEFAULT_LNG = -73.5814131; // Montreal office
 		var currentMap = null;
 
-		window.addEventListener('load', init);
+		document.addEventListener('DOMContentLoaded', init);
 
 		function init() {
 			var mapOptions = {

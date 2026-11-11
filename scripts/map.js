@@ -1,10 +1,20 @@
 	var DEFAULT_LAT = 45.5230433; // Montreal office
 	var DEFAULT_LNG = -73.5814131; // Montreal office
-	var currentMap = null;
+	var currentMap;
 
-	document.addEventListener('DOMContentLoaded', init);
+	function initMap() {
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', init, { once: true });
+			return;
+		}
+		init();
+	}
+	window.initMap = initMap;
 
 	function init() {
+		if (currentMap) {
+			return;
+		}
 		var mapOptions = {
 			backgroundColor: '#230913', // map landscape color
 			zoom: 10,
@@ -159,7 +169,7 @@
 	}
 
 	function setDefaultMapCenter(map) {
-		console.warn('Using default map center (Montreal office).');
+		console.info('Using default map center (Montreal office).');
 		map.setCenter(new google.maps.LatLng(DEFAULT_LAT, DEFAULT_LNG));
 	}
 

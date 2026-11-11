@@ -1,0 +1,103 @@
+html,
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	background-color: #230913; /* map landscape color */
+}
+
+.logo {
+	width: 32px;
+	height: 32px;
+	display: block;
+	filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.85)) drop-shadow(0 6px 8px rgba(0, 0, 0, 0.55));
+}
+
+.top-left {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.brand-title {
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 22px;
+	font-weight: 700;
+	color: #FFFFFF;
+	text-shadow: 0 2px 2px rgba(0, 0, 0, 0.85), 0 6px 10px rgba(0, 0, 0, 0.55);
+	line-height: 1;
+}
+
+.top-right {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.github-link {
+	display: block;
+}
+
+.github-logo {
+	display: block;
+	width: 32px;
+	height: 32px;
+}
+
+.store-link {
+	display: block;
+}
+
+.store-link-logo {
+	display: block;
+	width: auto;
+	height: 44px;
+}
+
+.my-location-btn {
+	position: absolute;
+	right: 8px;
+	bottom: 24px;
+	z-index: 2;
+	width: 28px;
+	height: 28px;
+	border: 1px solid #FFFFFF;
+	border-radius: 14px;
+	background: #000000;
+	color: #FFFFFF;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	opacity: 0.3;
+}
+
+.my-location-btn .material-icons {
+	font-size: 17px;
+}
+
+.my-location-btn:hover,
+.my-location-btn:focus-visible {
+	opacity: 0.7;
+}
+
+#map {
+	background-color: #230913; /* map landscape color */
+	width: 100%;
+	height: 100%;
+}
+
+@media (max-width: 384px) {
+	.top-right {
+		top: 56px;
+	}
+}

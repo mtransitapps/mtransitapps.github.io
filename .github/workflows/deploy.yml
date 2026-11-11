@@ -33,9 +33,10 @@ jobs:
         uses: actions/checkout@v7
 
       # Inject the API Key secret into the source file
-      - name: Inject API Key
+      - name: Inject API Keys
         env:
           MT_MAPS_JS_API_KEY: ${{ secrets.MT_MAPS_JS_API_KEY }}
+          MT_REPLACE_WITH_GOOGLE_SITE_VERIFICATION: ${{ secrets.MT_REPLACE_WITH_GOOGLE_SITE_VERIFICATION }}
         run: |
           set -euo pipefail
           if [ -z "${MT_MAPS_JS_API_KEY}" ]; then
@@ -45,6 +46,11 @@ jobs:
           esc_key=$(printf '%s' "$MT_MAPS_JS_API_KEY" | sed -e 's/[\\/&]/\\\\&/g')
           sed -i "s/MT_REPLACE_WITH_MAPS_JS_API_KEY/${esc_key}/g" ./index.html
           sed -i "s/MT_REPLACE_WITH_MAPS_JS_API_KEY/${esc_key}/g" ./dev/map/empty.html
+          if [ -z "${MT_REPLACE_WITH_GOOGLE_SITE_VERIFICATION}" ]; then
+            echo "MT_REPLACE_WITH_GOOGLE_SITE_VERIFICATION is not set" >&2
+            exit 1
+          fi
+          sed -i "s/MT_REPLACE_WITH_GOOGLE_SITE_VERIFICATION/$MT_REPLACE_WITH_GOOGLE_SITE_VERIFICATION/g" ./index.html
 
 
       - name: Setup Pages

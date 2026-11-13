@@ -1819,8 +1819,8 @@
   {
     "repo": "ca-wood-buffalo-rmwb-transit-bus-android",
     "pkg": "org.mtransit.android.ca_wood_buffalo_rmwb_transit_bus",
-    "store": "internal",
-    "name": "RMWB Transit (Regional Municipality of Wood Buffalo)",
+    "store": "production",
+    "name": "Wood Buffalo Transit (RMWB, Regional Municipality of Wood Buffalo)",
     "location": "Fort McMurray, AB, Canada",
     "type_id": "3",
     "color": "11284A",

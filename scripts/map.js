@@ -173,9 +173,46 @@
 		map.setCenter(new google.maps.LatLng(DEFAULT_LAT, DEFAULT_LNG));
 	}
 
+	function loadMarkerIconFont() {
+		return new Promise(function (resolve, reject) {
+			var stylesheet = document.getElementById('material-icons-stylesheet');
+			if (!stylesheet || !document.fonts) {
+				reject(new Error('Material Icons stylesheet or Font Loading API is unavailable'));
+				return;
+			}
+			if (stylesheet.dataset.loadFailed === 'true') {
+				reject(new Error('Material Icons stylesheet failed to load'));
+				return;
+			}
+			function loadFont() {
+				document.fonts.load('400 17px "Material Icons"')
+					.then(function (fonts) {
+						if (!fonts.length) {
+							throw new Error('Material Icons font is unavailable');
+						}
+						return true;
+					})
+					.then(resolve, reject);
+			}
+			// The non-blocking stylesheet must register its font face before we load it.
+			if (stylesheet.sheet && stylesheet.media !== 'print') {
+				loadFont();
+			} else {
+				stylesheet.addEventListener('load', loadFont, { once: true });
+				stylesheet.addEventListener('error', function () {
+					reject(new Error('Material Icons stylesheet failed to load'));
+				}, { once: true });
+			}
+		});
+	}
+
 	function loadMarkers(map) {
 		var infoWindow = new google.maps.InfoWindow();
 		var showBetaModules = new URLSearchParams(window.location.search).get('beta') === 'true';
+		var iconFontReady = loadMarkerIconFont().catch(function (error) {
+			console.warn('Could not load Material Icons; keeping plain map markers', error);
+			return false;
+		});
 
 		fetch('data/modules.json', { cache: 'no-store' })
 			.then(function (response) {
@@ -210,15 +247,22 @@
 							strokeColor: '#FFFFFF',
 							strokeWeight: 1,
 							scale: 13
-						},
-						label: iconName ? {
-							text: iconName,
-							color: '#FFFFFF',
-							fontFamily: 'Material Icons',
-							fontSize: '17px',
-							fontWeight: '400'
-						} : undefined
+						}
 					});
+
+					if (iconName) {
+						iconFontReady.then(function (loaded) {
+							if (loaded) {
+								marker.setLabel({
+									text: iconName,
+									color: '#FFFFFF',
+									fontFamily: 'Material Icons',
+									fontSize: '17px',
+									fontWeight: '400'
+								});
+							}
+						});
+					}
 
 					marker.addListener('click', function () {
 						infoWindow.setContent(buildInfoWindowContent(module));

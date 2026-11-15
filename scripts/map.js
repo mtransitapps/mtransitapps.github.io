@@ -195,10 +195,18 @@
 					.then(resolve, reject);
 			}
 			// The non-blocking stylesheet must register its font face before we load it.
-			if (stylesheet.sheet && stylesheet.media !== 'print') {
+			if (stylesheet.sheet) {
+				if (stylesheet.media === 'print') {
+					stylesheet.media = 'all';
+				}
 				loadFont();
 			} else {
-				stylesheet.addEventListener('load', loadFont, { once: true });
+				stylesheet.addEventListener('load', function () {
+					if (stylesheet.media === 'print') {
+						stylesheet.media = 'all';
+					}
+					loadFont();
+				}, { once: true });
 				stylesheet.addEventListener('error', function () {
 					reject(new Error('Material Icons stylesheet failed to load'));
 				}, { once: true });

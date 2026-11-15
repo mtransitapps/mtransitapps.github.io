@@ -196,15 +196,15 @@
 			}
 			// The non-blocking stylesheet must register its font face before we load it.
 			if (stylesheet.media === 'all') {
-                loadFont();
-            } else {
-                stylesheet.addEventListener('load', function () {
-                    loadFont();
-                }, { once: true });
-                stylesheet.addEventListener('error', function () {
-                    reject(new Error('Material Icons stylesheet failed to load'));
-                }, { once: true });
-            }
+				loadFont();
+			} else {
+				stylesheet.addEventListener('load', function () {
+					loadFont();
+				}, { once: true });
+				stylesheet.addEventListener('error', function () {
+					reject(new Error('Material Icons stylesheet failed to load'));
+				}, { once: true });
+			}
 		});
 	}
 
@@ -216,65 +216,69 @@
 			return false;
 		});
 
-		fetch('data/modules.json', { cache: 'no-store' })
-			.then(function (response) {
+		Promise.all([
+			fetch('data/modules.json', { cache: 'no-store' }).then(function (response) {
 				if (!response.ok) {
 					throw new Error('Failed to load modules.json: ' + response.status);
 				}
 				return response.json();
-			})
-			.then(function (modules) {
-				modules.forEach(function (module) {
-					if (!showBetaModules && module.store !== 'production') {
-						return;
+			}),
+			iconFontReady
+		])
+		.then(function (results) {
+			var modules = results[0];
+			var loaded = results[1];
+
+			modules.forEach(function (module) {
+				if (!showBetaModules && module.store !== 'production') {
+					return;
+				}
+
+				var lat = parseFloat(module.lat);
+				var lng = parseFloat(module.lng);
+				if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+					return;
+				}
+
+				var position = new google.maps.LatLng(lat, lng);
+				var color = normalizeHexColor(module.color);
+				var iconName = markerIconNameForTypeId(module.type_id);
+
+				var markerOptions = {
+					position: position,
+					map: map,
+					title: module.name || module.pkg || 'MonTransit',
+					icon: {
+						path: google.maps.SymbolPath.CIRCLE,
+						fillColor: color,
+						fillOpacity: 1,
+						strokeColor: '#FFFFFF',
+						strokeWeight: 1,
+						scale: 13
 					}
+				};
 
-					var lat = parseFloat(module.lat);
-					var lng = parseFloat(module.lng);
-					if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-						return;
-					}
+				if (iconName && loaded) {
+					markerOptions.label = {
+						text: iconName,
+						color: '#FFFFFF',
+						fontFamily: 'Material Icons',
+						fontSize: '17px',
+						fontWeight: '400'
+					};
+				}
 
-					var position = new google.maps.LatLng(lat, lng);
-					var color = normalizeHexColor(module.color);
-					var iconName = markerIconNameForTypeId(module.type_id);
-					var marker = new google.maps.Marker({
-						position: position,
-						map: map,
-						title: module.name || module.pkg || 'MonTransit',
-						icon: {
-							path: google.maps.SymbolPath.CIRCLE,
-							fillColor: color,
-							fillOpacity: 1,
-							strokeColor: '#FFFFFF',
-							strokeWeight: 1,
-							scale: 13
-						}
-					});
+				var marker = new google.maps.Marker(markerOptions);
 
-					if (iconName) {
-						iconFontReady.then(function (loaded) {
-							if (loaded) {
-								marker.setLabel({
-									text: iconName,
-									color: '#FFFFFF',
-									fontFamily: 'Material Icons',
-									fontSize: '17px',
-									fontWeight: '400'
-								});
-							}
-						});
-					}
-
-					marker.addListener('click', function () {
-						infoWindow.setContent(buildInfoWindowContent(module));
-						infoWindow.open(map, marker);
-					});
+				marker.addListener('click', function () {
+					infoWindow.setContent(buildInfoWindowContent(module));
+					infoWindow.open(map, marker);
 				});
-			})
-			.catch(function (error) {
-				console.error('Could not render map markers from modules.json', error);
 			});
+		})
+		.catch(function (error) {
+			console.error('Could not render map markers from modules.json', error);
+		});
 	}
 
 	function markerIconNameForTypeId(typeId) {

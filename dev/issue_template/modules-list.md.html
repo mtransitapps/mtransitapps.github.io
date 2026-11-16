@@ -60,7 +60,7 @@
 
 			async function loadModules() {
 				if (window.location.protocol === "file:") {
-					throw new Error("Loading modules.json from file:// is blocked by browser security. Open this page via http(s), e.g. a local web server.");
+					throw new Error("Please open this page through an HTTP server; browsers block loading modules.json from a local file.");
 				}
 				const res = await fetch("../../data/modules.json");
 				if (!res.ok) {

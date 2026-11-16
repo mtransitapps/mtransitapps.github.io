@@ -41,7 +41,7 @@
 				];
 				try {
 					if (window.location.protocol === "file:") {
-						throw new Error("Loading modules.json from file:// is blocked by browser security. Open this page via http(s), e.g. a local web server.");
+						throw new Error("This page must be opened through an HTTP server, not directly as a local file.");
 					}
 					const modulesRes = await fetch("../../data/modules.json");
 					if (!modulesRes.ok) {

@@ -31,6 +31,47 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          ref: master
+
+      - name: Pin production assets to the master commit
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+          import subprocess
+          from urllib.parse import quote as quote_url, unquote, urlsplit
+
+          root = Path.cwd()
+          commit_sha = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          cdn_prefix = "https://cdn.jsdelivr.net/gh/mtransitapps/mtransitapps.github.io@"
+          cdn_base = cdn_prefix + commit_sha
+          asset_extensions = {".css", ".js", ".png"}
+          urls = re.compile(r"""(?<!\\)(["'])([^"'\\\s<>]+\.(?:css|js|png|json)(?:[?#][^"'\\\s<>]*)?)\1""", re.IGNORECASE)
+
+          for source in root.rglob("*"):
+              if ".git" in source.relative_to(root).parts or source.suffix not in {".html", ".js"} or not source.is_file():
+                  continue
+
+              def pin_url(match):
+                  quote, url = match.groups()
+                  parsed = urlsplit(url)
+                  if parsed.scheme or parsed.netloc:
+                      return match.group(0)
+                  base = root if parsed.path.startswith("/") else source.parent
+                  target = (base / unquote(parsed.path).lstrip("/")).resolve()
+                  if not target.is_relative_to(root) or not target.is_file():
+                      return match.group(0)
+                  relative = target.relative_to(root).as_posix()
+                  if target.suffix.lower() not in asset_extensions and relative != "data/modules.json":
+                      return match.group(0)
+                  return quote + cdn_base + "/" + quote_url(relative) + url[len(parsed.path):] + quote
+
+              original = source.read_text()
+              rewritten = urls.sub(pin_url, original.replace(cdn_prefix + "master", cdn_base))
+              if rewritten != original:
+                  source.write_text(rewritten)
+          PY
 
       # Inject the API Key secret into the source file
       - name: Inject API Keys

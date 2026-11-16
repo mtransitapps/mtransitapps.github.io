@@ -23,17 +23,21 @@
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null">
+	<link id="material-icons-stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null" onerror="this.dataset.loadFailed='true'">
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+	</noscript>
 	
 	<link rel="stylesheet" href="styles/home.css">
 
-	<!-- Load map functions before loading the Google Maps API -->
-	<script src="scripts/map.js"></script>
+	<!-- Defer both scripts in order so initMap is defined before the API callback. -->
+	<script defer src="scripts/map.js"></script>
 	<!-- This APK key is restricted to 'Maps JavaScript API' on 'mtransitapps.github.io' website: -->
-	<script async src="https://maps.googleapis.com/maps/api/js?key=MT_REPLACE_WITH_MAPS_JS_API_KEY&libraries=maps,marker&loading=async&callback=initMap"></script>
+	<script defer src="https://maps.googleapis.com/maps/api/js?key=MT_REPLACE_WITH_MAPS_JS_API_KEY&libraries=maps,marker&loading=async&callback=initMap"></script>
 	<!-- Use demo key for local testing: https://developers.google.com/maps/documentation/javascript/demo-key -->
-	<!-- <script async
+	<!-- <script defer
 		src="https://maps.googleapis.com/maps/api/js?key=INSERT_DEMO_KEY_HERE&libraries=maps,marker&loading=async&callback=initMap"></script> -->
 </head>
 
@@ -56,7 +60,9 @@
 		</a>
 	</div>
 	<button id="my-location-btn" class="my-location-btn" type="button" aria-label="Use my location" title="Use my location">
-		<span class="material-icons" aria-hidden="true">my_location</span>
+		<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+			<path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm8.94 3A9 9 0 0 0 13 3.06V1h-2v2.06A9 9 0 0 0 3.06 11H1v2h2.06A9 9 0 0 0 11 20.94V23h2v-2.06A9 9 0 0 0 20.94 13H23v-2zM12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14z" />
+		</svg>
 	</button>
 </body>
 

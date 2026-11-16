@@ -81,8 +81,10 @@ body {
 	opacity: 0.3;
 }
 
-.my-location-btn .material-icons {
-	font-size: 17px;
+.my-location-btn svg {
+	width: 17px;
+	height: 17px;
+	fill: currentColor;
 }
 
 .my-location-btn:hover,

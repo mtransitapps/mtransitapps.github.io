@@ -59,10 +59,7 @@
 			}
 
 			async function loadModules() {
-				if (window.location.protocol === "file:") {
-					throw new Error("Loading modules.json from file:// is blocked by browser security. Open this page via http(s), e.g. a local web server.");
-				}
-				const res = await fetch("../../data/modules.json");
+				const res = await fetch("https://cdn.jsdelivr.net/gh/mtransitapps/mtransitapps.github.io@master/data/modules.json");
 				if (!res.ok) {
 					throw new Error("HTTP " + res.status + " while loading modules.json");
 				}

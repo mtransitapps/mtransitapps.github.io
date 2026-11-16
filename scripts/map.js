@@ -1,5 +1,8 @@
 	var DEFAULT_LAT = 45.5230433; // Montreal office
 	var DEFAULT_LNG = -73.5814131; // Montreal office
+	// CDN scripts bypass deploy-time rewriting; resolve data from the same commit as this script.
+	// map.js and modules.json are both served through the same commit on the CDN.
+	var MODULES_URL = new URL('../data/modules.json', document.currentScript.src).href;
 	var currentMap;
 
 	function initMap() {
@@ -217,7 +220,7 @@
 		});
 
 		Promise.all([
-			fetch('data/modules.json', { cache: 'no-store' }).then(function (response) {
+			fetch(MODULES_URL, { cache: 'no-store' }).then(function (response) {
 				if (!response.ok) {
 					throw new Error('Failed to load modules.json: ' + response.status);
 				}

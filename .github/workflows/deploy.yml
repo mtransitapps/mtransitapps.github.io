@@ -31,6 +31,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          ref: master
+
+      - name: Pin jsDelivr URLs to the master commit
+        run: |
+          set -euo pipefail
+          commit_sha=$(git rev-parse HEAD)
+          find . -type d -name .git -prune -o \
+            -type f \( -name '*.html' -o -name '*.js' \) \
+            -exec sed -i "s|cdn\.jsdelivr\.net/gh/mtransitapps/mtransitapps\.github\.io@master|cdn.jsdelivr.net/gh/mtransitapps/mtransitapps.github.io@${commit_sha}|g" {} +
 
       # Inject the API Key secret into the source file
       - name: Inject API Keys

@@ -1,7 +1,8 @@
 	var DEFAULT_LAT = 45.5230433; // Montreal office
 	var DEFAULT_LNG = -73.5814131; // Montreal office
 	// Match the script's local preview path or commit-pinned CDN URL.
-	var MODULES_URL = new URL('../data/modules.json', document.currentScript.src).href;
+	var currentScript = document.currentScript;
+	var MODULES_URL = new URL('../data/modules.json', currentScript ? currentScript.src : window.location.href).href;
 	var currentMap;
 
 	function initMap() {

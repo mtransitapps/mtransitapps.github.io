@@ -21,8 +21,12 @@
 
 	<script data-goatcounter="https://mtransitapps.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 	
+	<link rel="preconnect" href="https://cdn.jsdelivr.net">
+	<link rel="preconnect" href="https://maps.googleapis.com">
+	<link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null">
 	<link id="material-icons-stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null" onerror="this.dataset.loadFailed='true'">
 	<noscript>
@@ -30,10 +34,12 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
 	</noscript>
 	
-	<link rel="stylesheet" href="styles/home.css">
+	<!-- Keep static assets pinned to an immutable commit; update the hash when these files change. -->
+	<!-- Current value: 28270ee78ef1b6c981fa20195d749733080d2a5d -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mtransitapps/mtransitapps.github.io@28270ee78ef1b6c981fa20195d749733080d2a5d/styles/home.css">
 
 	<!-- Defer both scripts in order so initMap is defined before the API callback. -->
-	<script defer src="scripts/map.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/gh/mtransitapps/mtransitapps.github.io@28270ee78ef1b6c981fa20195d749733080d2a5d/scripts/map.js"></script>
 	<!-- This APK key is restricted to 'Maps JavaScript API' on 'mtransitapps.github.io' website: -->
 	<script defer src="https://maps.googleapis.com/maps/api/js?key=MT_REPLACE_WITH_MAPS_JS_API_KEY&libraries=maps,marker&loading=async&callback=initMap"></script>
 	<!-- Use demo key for local testing: https://developers.google.com/maps/documentation/javascript/demo-key -->
@@ -44,7 +50,7 @@
 <body>
 	<div id="map"></div>
 	<div class="top-left">
-		<img class="logo" src="hi-res-app-icon.png" alt="MonTransit" />
+		<img class="logo" src="https://cdn.jsdelivr.net/gh/mtransitapps/mtransitapps.github.io@28270ee78ef1b6c981fa20195d749733080d2a5d/hi-res-app-icon.png" alt="MonTransit" />
 		<span class="brand-title">MonTransit</span>
 	</div>
 	<div class="top-right">
@@ -56,7 +62,7 @@
 		</a>
 		<a class="github-link" href="https://github.com/mtransitapps" target="_blank" rel="noopener noreferrer"
 			aria-label="MonTransit on GitHub">
-			<img class="github-logo" src="img/gitHub_invertocat_white_clearspace.png" alt="GitHub" />
+			<img class="github-logo" src="https://cdn.jsdelivr.net/gh/mtransitapps/mtransitapps.github.io@28270ee78ef1b6c981fa20195d749733080d2a5d/img/gitHub_invertocat_white_clearspace.png" alt="GitHub" />
 		</a>
 	</div>
 	<button id="my-location-btn" class="my-location-btn" type="button" aria-label="Use my location" title="Use my location">

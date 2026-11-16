@@ -40,6 +40,9 @@
 					"org.mtransit.android"
 				];
 				try {
+					if (window.location.protocol === "file:") {
+						throw new Error("This page must be opened through an HTTP server, not directly as a local file.");
+					}
 					const modulesRes = await fetch("../../data/modules.json");
 					if (!modulesRes.ok) {
 						throw new Error("HTTP " + modulesRes.status + " while loading modules.json");

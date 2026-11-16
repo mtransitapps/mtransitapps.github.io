@@ -59,6 +59,9 @@
 			}
 
 			async function loadModules() {
+				if (window.location.protocol === "file:") {
+					throw new Error("Please open this page through an HTTP server; browsers block loading modules.json from a local file.");
+				}
 				const res = await fetch("../../data/modules.json");
 				if (!res.ok) {
 					throw new Error("HTTP " + res.status + " while loading modules.json");

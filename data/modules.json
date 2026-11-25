@@ -1922,6 +1922,18 @@
     "lng": "1.389383"
   },
   {
+    "repo": "fr-toulouse-tisseo-gondola-android",
+    "pkg": "org.mtransit.android.fr_toulouse_tisseo_gondola",
+    "store": "internal",
+    "name": "Tisséo Gondola",
+    "name_fr": "Tisséo - Téléo (Téléphérique)",
+    "location": "Toulouse, Haute-Garonne, France",
+    "type_id": "6",
+    "color": "E5056E",
+    "lat": "43.558488",
+    "lng": "1.453055"
+  },
+  {
     "repo": "fr-toulouse-tisseo-subway-android",
     "pkg": "org.mtransit.android.fr_toulouse_tisseo_subway",
     "store": "beta-private",

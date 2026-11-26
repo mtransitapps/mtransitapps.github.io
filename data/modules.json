@@ -1862,6 +1862,18 @@
     "lng": "1.616667"
   },
   {
+    "repo": "fr-aude-lio-bus-android",
+    "pkg": "org.mtransit.android.fr_aude_lio_bus",
+    "store": "internal",
+    "name": "liO Aude (11)",
+    "name_fr": "liO Aude (11)",
+    "location": "Carcassonne, Castelnaudary, Chalabre, Mirepoix, Montréal, Lézignan, Limoux, Narbonne, Quillan, Revel, Aude, France",
+    "type_id": "3",
+    "color": "CB1C27",
+    "lat": "43.159747",
+    "lng": "2.971040"
+  },
+  {
     "repo": "fr-haute-garonne-lio-bus-android",
     "pkg": "org.mtransit.android.fr_haute_garonne_lio_bus",
     "store": "beta-private",

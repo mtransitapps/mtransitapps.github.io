@@ -1924,7 +1924,7 @@
   {
     "repo": "fr-toulouse-tisseo-light-rail-android",
     "pkg": "org.mtransit.android.fr_toulouse_tisseo_light_rail",
-    "store": "internal",
+    "store": "beta-private",
     "name": "Tisséo Streetcar",
     "name_fr": "Tisséo - Tram",
     "location": "Toulouse, Blagnac, Beauzelle, Haute-Garonne, France",

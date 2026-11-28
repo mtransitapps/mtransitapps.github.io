@@ -1864,7 +1864,7 @@
   {
     "repo": "fr-aveyron-lio-bus-android",
     "pkg": "org.mtransit.android.fr_aveyron_lio_bus",
-    "store": "internal",
+    "store": "beta-private",
     "name": "liO Aveyron (12)",
     "name_fr": "liO Aveyron (12)",
     "location": "Rodez, Millau, Villefranche-de-Rouergue, Figeac, Aveyron, France",

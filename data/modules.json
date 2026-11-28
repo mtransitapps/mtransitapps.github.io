@@ -1862,6 +1862,18 @@
     "lng": "1.616667"
   },
   {
+    "repo": "fr-gard-lio-bus-android",
+    "pkg": "org.mtransit.android.fr_gard_lio_bus",
+    "store": "beta-private",
+    "name": "liO Gard (30)",
+    "name_fr": "liO Gard (30)",
+    "location": "Nîmes, Alès, Bagnols-sur-Cèze, Beaucaire, St-Gilles, Villeneuve-lès-Avignon, Vauvert, Pont-St-Esprit, Gard, France",
+    "type_id": "3",
+    "color": "CB1C27",
+    "lat": "43.972933",
+    "lng": "4.213645"
+  },
+  {
     "repo": "fr-haute-garonne-lio-bus-android",
     "pkg": "org.mtransit.android.fr_haute_garonne_lio_bus",
     "store": "beta-private",
